@@ -1,4 +1,4 @@
-export const recordsManagementPolicy = {
+export const RecordsManagementPolicy = {
     "Records Management Policy":
     {
         "Version": "Tx3 Demo 1.0.0.2",

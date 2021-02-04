@@ -1,4 +1,4 @@
-export const SysPolicy = {
+export const SynchronizationPolicy = {
     "Synchronization Policy": {
         "Version": "VERA Demo Env - 0.0.0.2",
         "Locations": [

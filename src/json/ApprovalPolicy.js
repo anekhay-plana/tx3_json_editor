@@ -1,4 +1,4 @@
-export const ApprovalPolicy = {
+export const ApprovalPolicy ={
     "Approval Policy":
         {
             "Version": "Tx3 Demo 1.0.0.1",

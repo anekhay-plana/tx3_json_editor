@@ -1,4 +1,4 @@
-export const SysPolicySchema = {
+export const SynchronizationPolicySchema = {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
     "properties": {
