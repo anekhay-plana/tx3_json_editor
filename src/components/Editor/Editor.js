@@ -16,7 +16,12 @@ const Editor = ({json}) => {
                     schema={json.schema}
                     formData={formData}
                     onChange={e => setFormData(e.formData)}
-                />
+                    uiSchema={json.uiSchema}
+                >
+                    <div>
+                        <button type="submit" className='hidden'>Submit</button>
+                    </div>
+                </Form>
             </div>
             <div>
                 <JSONInput

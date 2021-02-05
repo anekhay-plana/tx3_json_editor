@@ -11,21 +11,11 @@ export const ApprovalPolicySchema = {
                 "Schema": {
                     "type": "object",
                     "properties": {
-                        "ID": {
-                            "type": "string"
-                        },
-                        "Major": {
-                            "type": "string"
-                        },
-                        "Minor": {
-                            "type": "string"
-                        }
+                        "ID": {"type": "string"},
+                        "Major": {"type": "string"},
+                        "Minor": {"type": "string"}
                     },
-                    "required": [
-                        "ID",
-                        "Major",
-                        "Minor"
-                    ]
+                    "required": ["ID", "Major", "Minor"]
                 },
                 "Approval Groups": {
                     "type": "array",
@@ -40,19 +30,14 @@ export const ApprovalPolicySchema = {
                         {
                             "type": "object",
                             "properties": {
-                                "Name": {
-                                    "type": "string"
-                                },
-                                "Rank": {
-                                    "type": "string"
-                                },
+                                "Name": {"type": "string"},
+                                "Rank": {"type": "string"},
                                 "Record Types": {
                                     "type": "array",
-                                    "items": [
-                                        {
-                                            "type": "string"
-                                        }
-                                    ]
+                                    "items": {
+                                        "type": "string"
+                                    }
+
                                 },
                                 "Levels": {
                                     "type": "array",
@@ -65,9 +50,8 @@ export const ApprovalPolicySchema = {
                                             "Approvers": {
                                                 "type": "array",
                                                 "items": {
-                                                    "type": "string"
-                                                }
-
+                                                    "type": "string",
+                                                },
                                             }
                                         },
                                         "required": [

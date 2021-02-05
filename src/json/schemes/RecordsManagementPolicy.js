@@ -42,11 +42,10 @@ export const RecordsManagementPolicySchema = {
                                     "properties": {
                                         "Systems": {
                                             "type": "array",
-                                            "items": [
-                                                {
+                                            "items": {
                                                     "type": "string"
                                                 }
-                                            ]
+
                                         },
                                         "Aliases": {
                                             "type": "array",
@@ -69,9 +68,8 @@ export const RecordsManagementPolicySchema = {
                                         },
                                         "Item Types": {
                                             "type": "array",
-                                            "items": [
-                                                {"type": "string"}
-                                            ]
+                                            "items": {"type": "string"}
+
                                         },
                                         "Singular Name": {"type": "string"},
                                         "Plural Name": {"type": "string"},
