@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
+import './Selector.css'
 
 const createOption = (array) => {
     const options = array.map((item, i) => {
@@ -12,11 +13,13 @@ const createOption = (array) => {
 
 const Selector = ({variants, handleChange, selected}) => {
     return(
-        <Select
-            value={selected}
-            onChange={handleChange}
-            options={createOption(variants)}
-        />
+        <div className='selector-container'>
+            <Select
+                value={selected}
+                onChange={handleChange}
+                options={createOption(variants)}
+            />
+        </div>
     )
 }
 export default Selector

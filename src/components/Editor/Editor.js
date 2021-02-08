@@ -1,21 +1,27 @@
-import {useEffect, useState} from "react";
-import { withTheme } from '@rjsf/core';
-import { Theme as AntDTheme } from '@rjsf/antd';
-import JSONInput from "react-json-editor-ajrm";
-import locale from 'react-json-editor-ajrm/locale/en';
+import React, {useEffect, useState} from "react";
+import Form from "@rjsf/core";
 import CustomArrayField from "./widgets/CustomArrayField";
 import './Editor.css'
-
-const Form = withTheme(AntDTheme);
+import ViewJson from "./ViewJson/ViewJson";
 
 const Editor = ({json}) => {
+    const myRef = React.createRef()
     const [formData, setFormData] = useState(json.json)
+    const [scrollTop, setScrollTop] = useState(0)
 
     useEffect(()=>{setFormData(json.json)},[json])
 
+    const handleScroll = () => {
+        setScrollTop(myRef.current.scrollTop/(myRef.current.clientHeight * 2))
+    }
+
     return (
         <div className='container'>
-            <div>
+            <div
+                className='json-editor-window'
+                onScroll={handleScroll}
+                ref={myRef}
+            >
                 <Form
                     schema={json.schema}
                     formData={formData}
@@ -28,12 +34,7 @@ const Editor = ({json}) => {
                     </div>
                 </Form>
             </div>
-            <div>
-                <JSONInput
-                    locale={locale}
-                    placeholder={formData}
-                />
-            </div>
+            <ViewJson scrollTop={scrollTop} data={formData}/>
         </div>
     );
 

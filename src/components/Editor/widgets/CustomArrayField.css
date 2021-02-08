@@ -1,12 +1,9 @@
-.container{
+.add{
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    cursor: pointer;
 }
-.content{
-    width: 600px;
-    flex-grow: 0;
-}
-.active{
-    display: flex;
-    align-items: end;
+.children{
+    margin-left: 5%;
 }

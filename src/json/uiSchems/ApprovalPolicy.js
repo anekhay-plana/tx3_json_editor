@@ -8,6 +8,7 @@ export const ApprovalPolicyUISchema = {
         ],
         "Approval Groups": {
             "ui:options": {
+                color: '#f7ebd9',
                 orderable: false
             }
         },
