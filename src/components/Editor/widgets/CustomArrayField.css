@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+.content{
+    width: 600px;
+    flex-grow: 0;
+}
+.active{
+    display: flex;
+    align-items: end;
+}

@@ -1,8 +1,12 @@
 import {useEffect, useState} from "react";
-import Form from '@rjsf/material-ui'
+import { withTheme } from '@rjsf/core';
+import { Theme as AntDTheme } from '@rjsf/antd';
 import JSONInput from "react-json-editor-ajrm";
 import locale from 'react-json-editor-ajrm/locale/en';
+import CustomArrayField from "./widgets/CustomArrayField";
 import './Editor.css'
+
+const Form = withTheme(AntDTheme);
 
 const Editor = ({json}) => {
     const [formData, setFormData] = useState(json.json)
@@ -17,6 +21,7 @@ const Editor = ({json}) => {
                     formData={formData}
                     onChange={e => setFormData(e.formData)}
                     uiSchema={json.uiSchema}
+                    ArrayFieldTemplate={CustomArrayField}
                 >
                     <div>
                         <button type="submit" className='hidden'>Submit</button>
