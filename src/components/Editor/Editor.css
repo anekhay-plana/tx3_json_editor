@@ -9,19 +9,7 @@
 }
 .json-editor-window{
     width: 70%;
-    height: 80vh;
+    max-height: 80vh;
     overflow-x: hidden;
-    margin-right: 10px;
+    padding-right: 10px;
 }
-.json-editor-window * fieldset {
-    border: 0;
-}
-/*.json-editor-window > form {*/
-/*    background: #f7ebd9;*/
-/*}*/
-/*.json-editor-window > form .field-object > fieldset > div> fieldset> div  {*/
-/*    background: #2b9c14;*/
-/*}*/
-/*.json-editor-window > form .field-object > fieldset > div> fieldset> div> fieldset>div  {*/
-/*    background: #dbeaf8;*/
-/*}*/

@@ -1,0 +1,21 @@
+.property-wrapper {
+
+}
+
+.title {
+    padding: 0 10px 0 10px;
+    font-size: 1.3em;
+    height: min-content;
+}
+
+.children-container {
+    padding: 10px;
+
+}
+
+.container-field > .children-container {
+    margin: 0 1px 2% 2%;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+

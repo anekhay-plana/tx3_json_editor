@@ -4,22 +4,25 @@ import React, {useEffect} from "react";
 import './ViewJson.css'
 
 const ViewJson = ({scrollTop, data}) => {
-    const myRef = React.createRef()
+    const scrollRef = React.createRef()
+    const clientHeight = React.createRef()
 
-    useEffect(()=>{
-        myRef.current.scrollTop = myRef.current.clientHeight*4*scrollTop
-    },[scrollTop])
+    useEffect(() => {
+        scrollRef.current.scrollTop = clientHeight.current.clientHeight * scrollTop
+    }, [scrollTop])
 
-    return(
-        <div className='json-display-window' ref={myRef}>
-            <JSONInput
-                locale={locale}
-                placeholder={data}
-                confirmGood={false}
-                viewOnly={true}
-                width='100%'
-                height='100%'
-            />
+    return (
+        <div className='json-display-window' ref={scrollRef}>
+            <div ref={clientHeight}>
+                <JSONInput
+                    locale={locale}
+                    placeholder={data}
+                    confirmGood={false}
+                    viewOnly={true}
+                    width='100%'
+                    height='100%'
+                />
+            </div>
         </div>
     )
 
