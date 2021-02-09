@@ -6,7 +6,7 @@ const CustomObjectField = (props) => {
         {props.title&&
             <div className='title'>{props.title}</div>
         }
-            {props.properties.map(element => <div className="children-container">{element.content}</div>)}
+            {props.properties.map((element,i)=> <div key={element.content + i} className="children-container">{element.content}</div>)}
     </div>
     )
 }

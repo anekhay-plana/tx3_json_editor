@@ -4,6 +4,7 @@ import CustomArrayField from "./widgets/Array/CustomArrayField";
 import './Editor.css'
 import ViewJson from "./ViewJson/ViewJson";
 import CustomObjectField from "./widgets/Object/CustomObjectField";
+import {sorterJson} from "../../json/sorter";
 
 const Editor = ({json}) => {
     const scrollRef = React.createRef()
@@ -28,7 +29,10 @@ const Editor = ({json}) => {
                     <Form
                         schema={json.schema}
                         formData={formData}
-                        onChange={e => setFormData(e.formData)}
+                        onChange={e => {
+                            const newJson = e.formData
+                            setFormData(sorterJson(newJson, json.order))
+                        }}
                         uiSchema={json.uiSchema}
                         ArrayFieldTemplate={CustomArrayField}
                         ObjectFieldTemplate={CustomObjectField}

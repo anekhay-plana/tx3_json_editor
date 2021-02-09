@@ -13,19 +13,22 @@ export const jsons = [
         name: 'Approval Policy',
         json: ApprovalPolicy,
         schema: ApprovalPolicySchema,
-        uiSchema: ApprovalPolicyUISchema
+        uiSchema: ApprovalPolicyUISchema,
+        order: ["Version", "Schema", "Approval Groups", "Route Templates"]
     },
     {
         name: 'Synchronization Policy',
         json: SynchronizationPolicy,
         schema: SynchronizationPolicySchema,
-        uiSchema: SynchronizationPolicyUISchema
+        uiSchema: SynchronizationPolicyUISchema,
+        order: ["Version", "Locations"]
     },
     {
         name: 'Records Management Policy',
         json: RecordsManagementPolicy,
         schema: RecordsManagementPolicySchema,
-        uiSchema: RecordsManagementPolicyUISchema
+        uiSchema: RecordsManagementPolicyUISchema,
+        order: ["Version", "Schema", "Record Types"]
     },
 ]
 

@@ -9,7 +9,9 @@ const CustomArrayField = (props) => {
         <div className='container-field'>
             <Accordion>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon/>}
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
                     className='title'
                 >
                     {props.title}
@@ -17,7 +19,7 @@ const CustomArrayField = (props) => {
                 <div>
                     <div className='children-container'>
                         <div className='children'>
-                            {props.items.map(element => element.children)}
+                            {props.items.map((element,i) =><div key={element.children.key + i}>{element.children}</div>)}
                         </div>
                         {props.canAdd &&
                         <div className='add-field'>
