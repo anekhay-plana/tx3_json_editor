@@ -4,18 +4,28 @@ import CustomArrayField from "./widgets/Array/CustomArrayField";
 import './Editor.css'
 import ViewJson from "./ViewJson/ViewJson";
 import CustomObjectField from "./widgets/Object/CustomObjectField";
-import {sorterJson} from "../../json/sorter";
+import {objToStrMap, strMapToObj} from "./helpers";
 
 const Editor = ({json}) => {
     const scrollRef = React.createRef()
     const clientHeight = React.createRef()
-    const [formData, setFormData] = useState(json.json)
+    const [formData, setFormData] = useState({})
     const [scrollTop, setScrollTop] = useState(0)
 
-    useEffect(()=>{setFormData(json.json)},[json])
+    useEffect(() => {
+            setFormData(json.json)
+        },
+        [json])
 
     const handleScroll = () => {
-        setScrollTop(scrollRef.current.scrollTop/(clientHeight.current.clientHeight))
+        setScrollTop(scrollRef.current.scrollTop / (clientHeight.current.clientHeight))
+    }
+
+    const handleChange = (e) => {
+        const form = objToStrMap(json.json, e.formData)
+        const objForm = strMapToObj(form)
+        console.log('LOOG', objForm)
+        setFormData(objForm)
     }
 
     return (
@@ -29,10 +39,7 @@ const Editor = ({json}) => {
                     <Form
                         schema={json.schema}
                         formData={formData}
-                        onChange={e => {
-                            const newJson = e.formData
-                            setFormData(sorterJson(newJson, json.order))
-                        }}
+                        onChange={handleChange}
                         uiSchema={json.uiSchema}
                         ArrayFieldTemplate={CustomArrayField}
                         ObjectFieldTemplate={CustomObjectField}

@@ -1,25 +1,27 @@
-import {Accordion, AccordionSummary} from "@material-ui/core";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import './CustomArrayField.css'
+import Collapsible from "react-collapsible";
 
 const CustomArrayField = (props) => {
 
     return (
         <div className='container-field'>
-            <Accordion>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                    className='title'
-                >
-                    {props.title}
-                </AccordionSummary>
+            <Collapsible
+                trigger={
+                    <div className='title'>
+                        {props.title}
+                    </div>
+                }
+                transitionTime={200}
+            >
                 <div>
                     <div className='children-container'>
                         <div className='children'>
-                            {props.items.map((element,i) =><div key={element.children.key + i}>{element.children}</div>)}
+                            {props.items.map((element, i) =>
+                                <div key={element.children.key + i}>
+                                    {element.children}
+                                </div>
+                            )}
                         </div>
                         {props.canAdd &&
                         <div className='add-field'>
@@ -32,7 +34,7 @@ const CustomArrayField = (props) => {
                         }
                     </div>
                 </div>
-            </Accordion>
+            </Collapsible>
         </div>
     )
 }

@@ -15,7 +15,6 @@ const ViewJson = ({scrollTop, data}) => {
         <div className='json-display-window' ref={scrollRef}>
             <div ref={clientHeight}>
                 <JSONInput
-                    theme={'light_mitsuketa_tribute'}
                     locale={locale}
                     placeholder={data}
                     confirmGood={false}
