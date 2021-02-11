@@ -1,24 +1,29 @@
-export function strMapToObj(strMap) {
-    let obj = Object.create(null);
-    for (let [k,v] of strMap) {
-        if(typeof v !== 'string'){
-            obj[k] = strMapToObj(v)
-        }
-        else {
-            obj[k] = v;
+export function orderInTObj(target, bla) {
+    const newObj = new Object(null)
+    const targetKeys = Object.keys(target)
+    const blaKeys = Object.keys(bla)
+    if (targetKeys.length !== blaKeys.length){
+        return bla
+    }
+    for (let key of targetKeys) {
+        if (typeof target[key] === 'string') {
+            newObj[key] = bla[key]
+        } else {
+            if (Array.isArray(target[key])) {
+                if (target[key].length !== bla[key].length) {
+                    target[key].push(bla[key][bla[key].length - 1])
+                }
+                newObj[key] = target[key].map((item, i) => {
+                    if (typeof item === 'string' || item === undefined) {
+                        return bla[key][i]
+                    } else {
+                        return orderInTObj(item, bla[key][i])
+                    }
+                })
+            } else {
+                newObj[key] = orderInTObj(target[key], bla[key])
+            }
         }
     }
-    return obj;
-}
-export function objToStrMap(obj1,obj2) {
-    let strMap = new Map();
-    const keys = Object.keys(obj1)
-    for (let k of keys) {
-        if(typeof obj1[k]!== 'string'){
-            strMap.set(k, objToStrMap(obj1[k],obj2[k]));
-        }else {
-            strMap.set(k, obj2[k])
-        }
-    }
-    return strMap ;
+    return newObj;
 }

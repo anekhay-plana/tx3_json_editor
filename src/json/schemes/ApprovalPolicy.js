@@ -22,7 +22,6 @@ export const ApprovalPolicySchema = {
                     "items": {
                         "type": "string"
                     }
-
                 },
                 "Route Templates": {
                     "type": "array",

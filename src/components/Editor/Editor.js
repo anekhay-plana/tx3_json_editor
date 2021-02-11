@@ -4,7 +4,7 @@ import CustomArrayField from "./widgets/Array/CustomArrayField";
 import './Editor.css'
 import ViewJson from "./ViewJson/ViewJson";
 import CustomObjectField from "./widgets/Object/CustomObjectField";
-import {objToStrMap, strMapToObj} from "./helpers";
+import {orderInTObj} from "./helpers";
 
 const Editor = ({json}) => {
     const scrollRef = React.createRef()
@@ -12,9 +12,7 @@ const Editor = ({json}) => {
     const [formData, setFormData] = useState({})
     const [scrollTop, setScrollTop] = useState(0)
 
-    useEffect(() => {
-            setFormData(json.json)
-        },
+    useEffect(() => {setFormData(json.json)},
         [json])
 
     const handleScroll = () => {
@@ -22,10 +20,8 @@ const Editor = ({json}) => {
     }
 
     const handleChange = (e) => {
-        const form = objToStrMap(json.json, e.formData)
-        const objForm = strMapToObj(form)
-        console.log('LOOG', objForm)
-        setFormData(objForm)
+        console.log('LOOG', e.formData)
+        setFormData(orderInTObj(formData,e.formData))
     }
 
     return (
