@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import Form from "@rjsf/material-ui";
 import CustomArrayField from "./widgets/Array/CustomArrayField";
-import './Editor.css'
-import ViewJson from "./ViewJson/ViewJson";
 import CustomObjectField from "./widgets/Object/CustomObjectField";
+import ViewJson from "./ViewJson/ViewJson";
 import {orderInTObj} from "./helpers";
+import './Editor.css'
 
 const Editor = ({json}) => {
     const scrollRef = React.createRef()
@@ -20,7 +20,6 @@ const Editor = ({json}) => {
     }
 
     const handleChange = (e) => {
-        console.log('LOOG', e.formData)
         setFormData(orderInTObj(formData,e.formData))
     }
 

@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.4.0",
+    "@flipbyte/formik-json": "^0.6.1",
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "@rjsf/antd": "^2.4.2",
@@ -15,15 +16,18 @@
     "@testing-library/user-event": "^12.6.3",
     "ajv": "^7.0.4",
     "antd": "^4.12.2",
+    "formik": "^2.2.6",
     "jsoneditor": "^9.1.9",
     "jsoneditor-react": "^3.1.0",
     "react": "^17.0.1",
+    "react-accessible-accordion": "^3.3.4",
     "react-collapsible": "^2.8.3",
     "react-dom": "^17.0.1",
     "react-json-editor-ajrm": "^2.5.13",
     "react-scripts": "4.0.1",
     "react-select": "^4.0.2",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "yup": "^0.32.8"
   },
   "scripts": {
     "predeploy": "npm run build",

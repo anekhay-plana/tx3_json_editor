@@ -3,7 +3,6 @@ import './CustomArrayField.css'
 import Collapsible from "react-collapsible";
 
 const CustomArrayField = (props) => {
-
     return (
         <div className='container-field'>
             <Collapsible

@@ -6,20 +6,49 @@ export const ApprovalPolicySchema = {
             "type": "object",
             "properties": {
                 "Version": {
+                    "validation": {
+                        "type":"string",
+                        "maxLength": 25,
+                        "minLength": 3,
+                    },
                     "type": "string"
                 },
                 "Schema": {
                     "type": "object",
                     "properties": {
-                        "ID": {"type": "string"},
-                        "Major": {"type": "string"},
-                        "Minor": {"type": "string"}
+                        "ID": {
+                            "validation": {
+                                "type":"url",
+                                "maxLength": 25,
+                                "minLength": 3,
+                            },
+                            "type": "string"
+                        },
+                        "Major": {
+                            "validation": {
+                                "type":"number",
+                                "maxLength": 1,
+                            },
+                            "type": "string"
+                        },
+                        "Minor": {
+                            "validation": {
+                                "type":"number",
+                                "maxLength": 1,
+                            },
+                            "type": "string"
+                        }
                     },
                     "required": ["ID", "Major", "Minor"]
                 },
                 "Approval Groups": {
                     "type": "array",
                     "items": {
+                        "validation": {
+                            "type":"string",
+                            "maxLength": 25,
+                            "minLength": 3,
+                        },
                         "type": "string"
                     }
                 },
@@ -29,11 +58,29 @@ export const ApprovalPolicySchema = {
                         {
                             "type": "object",
                             "properties": {
-                                "Name": {"type": "string"},
-                                "Rank": {"type": "string"},
+                                "Name": {
+                                    "validation": {
+                                        "type":"string",
+                                        "maxLength": 25,
+                                        "minLength": 3,
+                                    },
+                                    "type": "string"
+                                },
+                                "Rank": {
+                                    "validation": {
+                                        "type":"number",
+                                        "maxLength": 1,
+                                    },
+                                    "type": "string"
+                                },
                                 "Record Types": {
                                     "type": "array",
                                     "items": {
+                                        "validation": {
+                                            "type":"string",
+                                            "maxLength": 25,
+                                            "minLength": 3,
+                                        },
                                         "type": "string"
                                     }
 
@@ -44,11 +91,21 @@ export const ApprovalPolicySchema = {
                                         "type": "object",
                                         "properties": {
                                             "Name": {
+                                                "validation": {
+                                                    "type":"string",
+                                                    "maxLength": 25,
+                                                    "minLength": 3,
+                                                },
                                                 "type": "string"
                                             },
                                             "Approvers": {
                                                 "type": "array",
                                                 "items": {
+                                                    "validation": {
+                                                        "type":"string",
+                                                        "maxLength": 25,
+                                                        "minLength": 3,
+                                                    },
                                                     "type": "string",
                                                 },
                                             }
@@ -66,14 +123,30 @@ export const ApprovalPolicySchema = {
                                         "type": "object",
                                         "properties": {
                                             "Type": {
+                                                "validation": {
+                                                    "type":"string",
+                                                    "maxLength": 25,
+                                                    "minLength": 3,
+                                                },
                                                 "type": "string"
                                             },
                                             "Name": {
+                                                "validation": {
+                                                    "type":"string",
+                                                    "maxLength": 25,
+                                                    "minLength": 3,
+                                                },
                                                 "type": "string"
                                             },
                                             "Values": {
+
                                                 "type": "array",
                                                 "items": {
+                                                    "validation": {
+                                                        "type":"string",
+                                                        "maxLength": 25,
+                                                        "minLength": 3,
+                                                    },
                                                     "type": "string"
                                                 }
 

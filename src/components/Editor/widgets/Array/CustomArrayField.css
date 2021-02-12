@@ -8,10 +8,10 @@
     cursor: pointer;
     display: flex;
     justify-content: center;
-    color: darkgray;
+    color: #000000;
 }
 .add-button:active{
-    color: black;
+    color: darkgray;
 }
 .MuiPaper-elevation1{
     box-shadow: none!important;
