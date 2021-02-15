@@ -1,7 +1,7 @@
 import {TextField} from "@material-ui/core";
 import {useFormik} from "formik";
-import * as yup from 'yup'
 import {useEffect} from "react";
+import * as yup from 'yup'
 
 const InputWidget = (props) => {
     const {value, label, schema} = props

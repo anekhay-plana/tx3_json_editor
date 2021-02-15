@@ -6,26 +6,40 @@ export const RecordsManagementPolicySchema = {
             "type": "object",
             "properties": {
                 "Version": {
+                    "validation": {
+                        "type":"string",
+                        "maxLength": 25,
+                        "minLength": 3,
+                    },
                     "type": "string"
                 },
                 "Schema": {
                     "type": "object",
                     "properties": {
                         "ID": {
+                            "validation": {
+                                "type":"url",
+                                "maxLength": 25,
+                                "minLength": 3,
+                            },
                             "type": "string"
                         },
                         "Major": {
+                            "validation": {
+                                "type":"number",
+                                "maxLength": 1,
+                            },
                             "type": "string"
                         },
                         "Minor": {
+                            "validation": {
+                                "type":"number",
+                                "maxLength": 1,
+                            },
                             "type": "string"
                         }
                     },
-                    "required": [
-                        "ID",
-                        "Major",
-                        "Minor"
-                    ]
+                    "required": ["ID", "Major", "Minor"]
                 },
                 "Record Types": {
                     "type": "array",
@@ -33,6 +47,11 @@ export const RecordsManagementPolicySchema = {
                         "type": "object",
                         "properties": {
                             "Name": {
+                                "validation": {
+                                    "type":"string",
+                                    "maxLength": 25,
+                                    "minLength": 3,
+                                },
                                 "type": "string"
                             },
                             "Definitions": {
@@ -43,6 +62,11 @@ export const RecordsManagementPolicySchema = {
                                         "Systems": {
                                             "type": "array",
                                             "items": {
+                                                "validation": {
+                                                    "type":"string",
+                                                    "maxLength": 25,
+                                                    "minLength": 3,
+                                                },
                                                     "type": "string"
                                                 }
 
@@ -53,9 +77,19 @@ export const RecordsManagementPolicySchema = {
                                                 "type": "object",
                                                 "properties": {
                                                     "Policy Field": {
+                                                        "validation": {
+                                                            "type":"string",
+                                                            "maxLength": 25,
+                                                            "minLength": 3,
+                                                        },
                                                         "type": "string"
                                                     },
                                                     "System Field": {
+                                                        "validation": {
+                                                            "type":"string",
+                                                            "maxLength": 25,
+                                                            "minLength": 3,
+                                                        },
                                                         "type": "string"
                                                     }
                                                 },
@@ -68,13 +102,48 @@ export const RecordsManagementPolicySchema = {
                                         },
                                         "Item Types": {
                                             "type": "array",
-                                            "items": {"type": "string"}
+                                            "items": {
+                                                "validation": {
+                                                    "type":"string",
+                                                    "maxLength": 25,
+                                                    "minLength": 3,
+                                                },
+                                                "type": "string"
+                                            }
 
                                         },
-                                        "Singular Name": {"type": "string"},
-                                        "Plural Name": {"type": "string"},
-                                        "Ownership Description": {"type": "string"},
-                                        "Content Originator": {"type": "string"}
+                                        "Singular Name": {
+                                            "validation": {
+                                                "type":"string",
+                                                "maxLength": 25,
+                                                "minLength": 3,
+                                            },
+                                            "type": "string"
+                                        },
+                                        "Plural Name": {
+                                            "validation": {
+                                                "type":"string",
+                                                "maxLength": 25,
+                                                "minLength": 3,
+                                            },
+                                            "type": "string"
+                                        },
+                                        "Ownership Description": {
+                                            "validation": {
+                                                "type":"string",
+                                                "maxLength": 25,
+                                                "minLength": 3,
+                                            },
+                                            "type": "string"
+                                        },
+                                        "Content Originator": {
+                                            "validation": {
+                                                "type":"string",
+                                                "maxLength": 25,
+                                                "minLength": 3,
+                                            },
+                                            "type": "string"
+                                        }
                                     },
                                     "required": [
                                         "Systems",
@@ -94,10 +163,21 @@ export const RecordsManagementPolicySchema = {
                                     "type": "object",
                                     "properties": {
                                         "Name": {
+                                            "validation": {
+                                                "type":"string",
+                                                "maxLength": 25,
+                                                "minLength": 3,
+                                            },
                                             "type": "string"
                                         },
                                         "Is Data": {
-                                            "type": "string"
+                                            "validation": {
+                                                "type":"string",
+                                                "maxLength": 25,
+                                                "minLength": 3,
+                                            },
+                                            "type": "string",
+                                            "enum":["Yes","No"]
                                         }
                                     },
                                     "required": [
@@ -105,9 +185,7 @@ export const RecordsManagementPolicySchema = {
                                         "Is Data"
                                     ]
                                 },
-
                             }
-
                         }
                     },
                     "required": [

@@ -1,11 +1,12 @@
-import {useState} from "react";
-import Selector from "../Selector/Selector";
+import React, {useState} from "react";
+import Selector, {SelectedItem} from "../Selector/Selector";
 import {jsons} from '../../json'
 import Editor from "../Editor/Editor";
 
-const MainWindow = () => {
-    const [selected, setSelected] = useState(null)
-    const handleChange = selectedOption => {
+
+const MainWindow: React.FC = () => {
+    const [selected, setSelected] = useState<SelectedItem|null>(null)
+    const handleChange = (selectedOption:SelectedItem|null) => {
         setSelected(selectedOption);
     };
     return (

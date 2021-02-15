@@ -6,9 +6,24 @@ import ViewJson from "./ViewJson/ViewJson";
 import {orderInTObj} from "./helpers";
 import './Editor.css'
 
-const Editor = ({json}) => {
-    const scrollRef = React.createRef()
-    const clientHeight = React.createRef()
+interface ArrayItem {
+    name: string
+    json: object
+    schema: object
+    uiSchema: object
+}
+
+interface JsonProps {
+    json : ArrayItem
+}
+
+interface RefObject<T> {
+    readonly current: T | null
+}
+
+const Editor: React.FC<JsonProps> = ({json}) => {
+    const scrollRef: RefObject<any> = React.createRef()
+    const clientHeight: RefObject<any>   = React.createRef()
     const [formData, setFormData] = useState({})
     const [scrollTop, setScrollTop] = useState(0)
 
@@ -19,10 +34,10 @@ const Editor = ({json}) => {
         setScrollTop(scrollRef.current.scrollTop / (clientHeight.current.clientHeight))
     }
 
-    const handleChange = (e) => {
+    const handleChange = (e:any) => {
         setFormData(orderInTObj(formData,e.formData))
     }
-
+    {}
     return (
         <div className='container'>
             <div

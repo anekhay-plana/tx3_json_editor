@@ -7,8 +7,12 @@ export const SynchronizationPolicySchema = {
             "required": ["Version", "Locations"],
             "properties": {
                 "Version": {
+                    "validation": {
+                        "type":"string",
+                        "maxLength": 25,
+                        "minLength": 3,
+                    },
                     "type": "string",
-                    "const": "Version"
                 },
                 "Locations": {
                     "type": "array",
@@ -23,16 +27,65 @@ export const SynchronizationPolicySchema = {
                             "Urls"
                         ],
                         "properties": {
-                            "System": {"type": "string"},
-                            "Name": {"type": "string"},
-                            "Server": {"type": "string"},
-                            "Service Account": {"type": "string"},
-                            "Service Password": {"type": "string"},
+                            "System": {
+                                "validation": {
+                                    "type":"string",
+                                    "maxLength": 25,
+                                    "minLength": 3,
+                                },
+                                "type": "string"
+                            },
+                            "Name": {
+                                "validation": {
+                                    "type":"string",
+                                    "maxLength": 25,
+                                    "minLength": 3,
+                                },
+                                "type": "string"
+                            },
+                            "Server": {
+                                "validation": {
+                                    "type":"url",
+                                    "maxLength": 25,
+                                    "minLength": 3,
+                                },
+                                "type": "string"
+                            },
+                            "Service Account": {
+                                "validation": {
+                                    "type":"string",
+                                    "maxLength": 25,
+                                    "minLength": 3,
+                                },
+                                "type": "string"
+                            },
+                            "Service Password": {
+                                "validation": {
+                                    "type":"string",
+                                    "maxLength": 25,
+                                    "minLength": 3,
+                                },
+                                "type": "string"
+                            },
                             "Urls": {
                                 "type": "object",
                                 "properties": {
-                                    "Browser": {"type": "string"},
-                                    "API": {"type": "string"}
+                                    "Browser": {
+                                        "validation": {
+                                            "type":"url",
+                                            "maxLength": 25,
+                                            "minLength": 3,
+                                        },
+                                        "type": "string"
+                                    },
+                                    "API": {
+                                        "validation": {
+                                            "type":"url",
+                                            "maxLength": 25,
+                                            "minLength": 3,
+                                        },
+                                        "type": "string"
+                                    }
                                 }
                             }
                         }

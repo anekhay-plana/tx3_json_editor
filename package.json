@@ -14,6 +14,10 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.4",
     "@testing-library/user-event": "^12.6.3",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.28",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1",
     "ajv": "^7.0.4",
     "antd": "^4.12.2",
     "formik": "^2.2.6",
@@ -26,6 +30,7 @@
     "react-json-editor-ajrm": "^2.5.13",
     "react-scripts": "4.0.1",
     "react-select": "^4.0.2",
+    "typescript": "^4.1.5",
     "web-vitals": "^0.2.4",
     "yup": "^0.32.8"
   },
@@ -56,6 +61,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-select": "^4.0.13",
     "gh-pages": "^3.1.0"
   }
 }
