@@ -35,9 +35,9 @@ const Editor: React.FC<JsonProps> = ({json}) => {
     }
 
     const handleChange = (e:any) => {
+        console.log('LOOG', '123')
         setFormData(orderInTObj(formData,e.formData))
     }
-    {}
     return (
         <div className='container'>
             <div

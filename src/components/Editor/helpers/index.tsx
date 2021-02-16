@@ -11,7 +11,7 @@ export function orderInTObj(target:any, source:any) {
         } else {
             if (Array.isArray(target[key])) {
                 if (target[key].length !== source[key].length) {
-                    target[key].push(source[key][source[key].length - 1])
+                    target[key] = source[key]
                 }
                 newObj[key] = target[key].map((item:any, i:number) => {
                     if (typeof item === 'string' || item === undefined) {

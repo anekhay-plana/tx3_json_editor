@@ -1,22 +1,23 @@
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import './CustomArrayField.css'
 import Collapsible from "react-collapsible";
 import * as React from "react";
+import './CustomArrayField.css'
+import DeleteIcon from '@material-ui/icons/Delete';
 
 interface Props {
-    title: string
     items: Array<any>
-    canAdd:boolean
-    onAddClick: ()=>void
+    title: string
+    canAdd: boolean
+    onAddClick: any
 }
 
-const CustomArrayField:React.FC<Props> = ({items,title,canAdd,onAddClick}) => {
+const CustomArrayField:React.FC<Props> = (props) => {
     return (
-        <div className='container-field'>
+        <div className='container-array-field'>
             <Collapsible
                 trigger={
                     <div className='title'>
-                        {title}
+                        {props.title}
                     </div>
                 }
                 transitionTime={200}
@@ -24,17 +25,27 @@ const CustomArrayField:React.FC<Props> = ({items,title,canAdd,onAddClick}) => {
                 <div>
                     <div className='children-container'>
                         <div className='children'>
-                            {items.map((element, i) =>
-                                <div key={element.children.key + i}>
+                            {props.items.map((element: any, i) =>
+                                <div
+                                    className='container-array-field'
+                                    key={element.children.key + i}
+                                >
                                     {element.children}
+                                    {element.hasRemove && (
+                                        <div className='remove-field'>
+                                            <DeleteIcon
+                                                onClick={element.onDropIndexClick(element.index)}
+                                            />
+                                        </div>
+                                    )}
                                 </div>
                             )}
                         </div>
-                        {canAdd &&
+                        {props.canAdd &&
                         <div className='add-field'>
                             <div className='add-button'>
                                 <AddCircleIcon
-                                    onClick={onAddClick}
+                                    onClick={props.onAddClick}
                                 />
                             </div>
                         </div>

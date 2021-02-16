@@ -3,9 +3,18 @@ import locale from 'react-json-editor-ajrm/locale/en';
 import React, {useEffect} from "react";
 import './ViewJson.css'
 
-const ViewJson = ({scrollTop, data}) => {
-    const scrollRef = React.createRef()
-    const clientHeight = React.createRef()
+interface Props {
+    scrollTop: number
+    data: object
+}
+
+interface RefObject<T> {
+    readonly current: T | null
+}
+
+const ViewJson: React.FC<Props>  = ({scrollTop, data}) => {
+    const scrollRef:RefObject<any> = React.createRef()
+    const clientHeight:RefObject<any> = React.createRef()
 
     useEffect(() => {
         scrollRef.current.scrollTop = clientHeight.current.clientHeight * scrollTop

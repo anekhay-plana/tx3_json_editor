@@ -2,11 +2,7 @@ import InputWidget from "./InputWidget/InputWidget";
 
 export const RecordsManagementPolicyUISchema = {
     "Records Management Policy": {
-        "ui:order": [
-            "Version",
-            "Schema",
-            "Record Types",
-        ],
+        "ui:order": ["Version", "Schema", "Record Types"],
         "Version": {"ui:widget": InputWidget},
         "Schema": {
             "ID": {"ui:widget": InputWidget},

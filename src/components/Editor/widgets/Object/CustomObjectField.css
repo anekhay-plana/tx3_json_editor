@@ -1,19 +1,20 @@
-.property-wrapper {
-
-}
-
 .title {
-    padding: 0 10px 0 10px;
+    padding: 5px 10px 5px 10px;
     font-size: 1.3em;
     height: min-content;
 }
 
 .children-container {
-    padding: 10px;
-
+    padding: 5px;
 }
 
-.container-field > .children-container {
+.container-field  .container-field  {
+    padding: 5px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2)
+}
+
+.container-field  .container-field .container-field {
+    padding: 5px;
     margin: 0 1px 2% 2%;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
 }
