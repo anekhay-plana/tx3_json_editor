@@ -1,19 +1,36 @@
 import React, {useState} from "react";
-import Selector, {SelectedItem} from "../Selector/Selector";
 import {jsons} from '../../json'
 import Editor from "../Editor/Editor";
+import ClearIcon from '@material-ui/icons/Clear';
+import FileDropComponent from "../FileDropComponent/FileDropComponent";
+import './MainWindow.css'
 
 
 const MainWindow: React.FC = () => {
-    const [selected, setSelected] = useState<SelectedItem|null>(null)
-    const handleChange = (selectedOption:SelectedItem|null) => {
-        setSelected(selectedOption);
-    };
+    const [selectedJson, setSelectedJson] = useState<any>(null)
+    const handleDrop = (name: string, newJson: object) => {
+        const json = jsons.filter(item => item.name === name)
+        setSelectedJson({...json[0], json: newJson})
+    }
+
+    const handleClickClear = () =>{
+        setSelectedJson(null)
+    }
+
+
     return (
         <>
-            <Selector variants={jsons} handleChange={handleChange} selected={selected}/>
-            {selected !== null &&
-            <Editor json={jsons[selected.value]}/>
+
+            {selectedJson !== null
+                ? <div>
+                    <div className='clear-icon'>
+                        <ClearIcon
+                            onClick={handleClickClear}
+                        />
+                    </div>
+                    <Editor json={selectedJson}/>
+                </div>
+                : <FileDropComponent handleDrop={handleDrop}/>
             }
         </>
     )
