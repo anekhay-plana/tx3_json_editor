@@ -6,9 +6,10 @@ interface Props {
     field: any
     json: any
     name?: string
+    onChange: any
 }
 
-const StringField: React.FC<Props> = ({field, json, name}) => {
+const StringField: React.FC<Props> = ({field, json, name,onChange}) => {
 
     const formik = useFormik({
         initialValues: {
@@ -26,6 +27,7 @@ const StringField: React.FC<Props> = ({field, json, name}) => {
     const handleChange = (e) => {
         formik.handleChange(e);
         formik.setFieldTouched('value');
+        onChange(name,e.target.value)
     }
 
     return (

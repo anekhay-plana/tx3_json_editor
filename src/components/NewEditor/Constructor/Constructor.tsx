@@ -6,6 +6,7 @@ interface Props {
     field: any
     json: any
     name? :string
+    onChange: any
 }
 
 const Constructor: React.FC<Props> = (props) => {
