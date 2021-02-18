@@ -39,9 +39,11 @@ const InputWidget = (props) => {
         if (!formik.values.text) {
             formik.setFieldValue(label, value)
         }
-    }, [value])
+    }, [value,label])
 
     const validationSchema = generateValidation(schema.validation)
+    
+    console.log('LOOG', validationSchema)
 
     const formik = useFormik({
         initialValues: {

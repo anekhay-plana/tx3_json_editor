@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import * as React from 'react';
 import Form from "@rjsf/material-ui";
 import CustomArrayField from "./widgets/Array/CustomArrayField";
 import CustomObjectField from "./widgets/Object/CustomObjectField";
@@ -24,10 +24,10 @@ interface RefObject<T> {
 const Editor: React.FC<JsonProps> = ({json}) => {
     const scrollRef: RefObject<any> = React.createRef()
     const clientHeight: RefObject<any>   = React.createRef()
-    const [formData, setFormData] = useState({})
-    const [scrollTop, setScrollTop] = useState(0)
+    const [formData, setFormData] = React.useState({})
+    const [scrollTop, setScrollTop] = React.useState(0)
 
-    useEffect(() => {setFormData(json.json)},
+    React.useEffect(() => {setFormData(json.json)},
         [json])
 
     const handleScroll = () => {
@@ -35,7 +35,6 @@ const Editor: React.FC<JsonProps> = ({json}) => {
     }
 
     const handleChange = (e:any) => {
-        console.log('LOOG', '123')
         setFormData(orderInTObj(formData,e.formData))
     }
     return (

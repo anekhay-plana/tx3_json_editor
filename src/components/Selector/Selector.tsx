@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Select from "react-select";
-import {createOption} from './helpers/index'
+import {createOption} from './helpers'
 import './Selector.css'
 
 interface ArrayItem {

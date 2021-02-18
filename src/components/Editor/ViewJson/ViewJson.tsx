@@ -1,6 +1,6 @@
+import * as React from 'react';
 import JSONInput from 'react-json-editor-ajrm';
 import locale from 'react-json-editor-ajrm/locale/en';
-import React, {useEffect} from "react";
 import './ViewJson.css'
 
 interface Props {
@@ -16,7 +16,7 @@ const ViewJson: React.FC<Props>  = ({scrollTop, data}) => {
     const scrollRef:RefObject<any> = React.createRef()
     const clientHeight:RefObject<any> = React.createRef()
 
-    useEffect(() => {
+    React.useEffect(() => {
         scrollRef.current.scrollTop = clientHeight.current.clientHeight * scrollTop
     }, [scrollTop])
 
