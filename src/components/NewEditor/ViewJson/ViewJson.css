@@ -1,0 +1,7 @@
+.json-display-window{
+    left: 59%;
+    position: fixed;
+    max-height: 600px;
+    width: 40%;
+    overflow-x: hidden;
+}
