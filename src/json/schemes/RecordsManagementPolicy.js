@@ -1,25 +1,42 @@
 import * as yup from 'yup'
 
-export const yupSchema = yup.object({
-    "Synchronization Policy": yup.object({
-        "Version":yup.string().required().required('required'),
-        "Locations": yup.array().of(
+export const RecordsManagementPolicySchema = yup.object({
+    "Records Management Policy": yup.object({
+        "Version": yup.string().required('required'),
+        "Locations": yup.object({
+            "ID": yup.string().url('Enter valid url').required('required'),
+            "Major": yup.string().number('Only numbers').required('required'),
+            "Minor": yup.string().number('Only numbers').required('required')
+        }),
+        "Record Types": yup.array().of(
             yup.object({
-                "System": yup.string().required('required'),
                 "Name": yup.string().required('required'),
-                "Server": yup.string()
-                    .url('Enter valid url')
-                    .required('required'),
-                "Service Account": yup.string().required('required'),
-                "Service Password": yup.string().required('required'),
-                "Urls": yup.object({
-                    "Browser":yup.string()
-                        .url('Enter valid url')
-                        .required('required'),
-                    "API": yup.string()
-                        .url('Enter valid url')
-                        .required('required'),
-                })
+                "Definitions": yup.array().of(
+                    yup.object({
+                        "Systems":yup.array().of(
+                            yup.string.required('required')
+                        ),
+                        "Aliases":yup.array().of(
+                            yup.object({
+                                "Policy Field": yup.string.required('required'),
+                                "System Field":yup.string.required('required')
+                            })
+                        ),
+                        "Item Types":yup.array().of(
+                            yup.string.required('required')
+                        ),
+                        "Singular Name": yup.string().required('required'),
+                        "Plural Name": yup.string().required('required'),
+                        "Ownership Description": yup.string().required('required'),
+                        "Content Originator": yup.string().required('required'),
+                    })
+                ),
+                "Fields": yup.array().of(
+                    yup.object({
+                        "Name": yup.string().required('required'),
+                        "Is Data": yup.string().required('required')
+                    })
+                )
             })
         )
     })

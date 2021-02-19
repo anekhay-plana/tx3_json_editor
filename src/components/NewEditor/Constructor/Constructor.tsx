@@ -4,7 +4,7 @@ import StringField from "./StringtField/StringtField";
 
 interface Props {
     field: any
-    json: any
+    json?: any
     name? :string
     onChange: any
 }

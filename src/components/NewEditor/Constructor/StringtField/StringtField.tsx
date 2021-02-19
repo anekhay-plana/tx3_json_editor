@@ -1,18 +1,24 @@
 import {TextField} from "@material-ui/core";
 import {useFormik} from "formik";
 import * as yup from "yup";
+import {useEffect} from "react";
 
 interface Props {
     field: any
-    json: any
+    json?: any
     name?: string|number
     onChange: any
 }
 
 const StringField: React.FC<Props> = ({field, json, name,onChange}) => {
+
+    useEffect(() => {
+            formik.setFieldValue('value', json)
+    }, [json])
+
     const formik = useFormik({
         initialValues: {
-            label: name,
+            label: typeof name === 'string'? name : '',
             value: json
         },
         validateOnBlur: true,

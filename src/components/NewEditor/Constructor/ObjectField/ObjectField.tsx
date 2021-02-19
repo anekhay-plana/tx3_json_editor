@@ -3,7 +3,7 @@ import './ObjectField.css'
 
 interface Props {
     field: any
-    json: any
+    json?: any
     onChange:any
     name?: string|number
 }
@@ -26,7 +26,7 @@ const ObjectField: React.FC<Props> = ({field, json,  onChange,name}) => {
                     <div key={i} className='object-child-container'>
                         <Constructor
                             field={field.fields[item]}
-                            json={json[item]}
+                            json={json[item]||''}
                             name={item}
                             onChange={onChangeInObject}/>
                     </div>

@@ -1,9 +1,9 @@
-.object-container{
-    margin: 20px 10px 10px 20px;
-    padding: 10px;
+.object-container .object-container{
+    margin: 0 10px 20px 20px;
+    padding: 20px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
     border-radius: 12px;
 }
 .object-child-container{
-    margin: 10px;
+    margin: 0 0 10px 0;
 }

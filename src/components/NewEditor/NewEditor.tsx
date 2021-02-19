@@ -1,6 +1,7 @@
 import * as React from "react";
 import {useState} from "react";
 import {SynchronizationPolicy} from '../../json/SynchronizationPolicy'
+import {ApprovalPolicy} from "../../json/ApprovalPolicy";
 import Constructor from "./Constructor/Constructor";
 import ViewJson from "./ViewJson/ViewJson";
 import './NewEditor.css'
@@ -16,7 +17,7 @@ interface RefObject<T> {
 const NewEditor: React.FC<Props> = ({yupSchema}) => {
     const scrollRef: RefObject<any> = React.createRef()
     const clientHeight: RefObject<any> = React.createRef()
-    const [formData, setFormData] = useState(SynchronizationPolicy)
+    const [formData, setFormData] = useState(ApprovalPolicy)
     const [scrollTop, setScrollTop] = React.useState(0)
 
     const handleScroll = () => {
