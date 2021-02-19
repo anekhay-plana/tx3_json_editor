@@ -9,9 +9,19 @@ interface Props {
     yupSchema: any
 }
 
-const NewEditor: React.FC<Props> = ({yupSchema}) => {
-    const [formData, setFormData] = useState(SynchronizationPolicy)
+interface RefObject<T> {
+    readonly current: T | null
+}
 
+const NewEditor: React.FC<Props> = ({yupSchema}) => {
+    const scrollRef: RefObject<any> = React.createRef()
+    const clientHeight: RefObject<any> = React.createRef()
+    const [formData, setFormData] = useState(SynchronizationPolicy)
+    const [scrollTop, setScrollTop] = React.useState(0)
+
+    const handleScroll = () => {
+        setScrollTop(scrollRef.current.scrollTop / (clientHeight.current.clientHeight))
+    }
 
     const handleChange = (object) => {
         setFormData(object)
@@ -19,11 +29,17 @@ const NewEditor: React.FC<Props> = ({yupSchema}) => {
 
     return (
         <div className='container'>
-            <div className='json-editor-window'>
-                <Constructor field={yupSchema} json={formData} onChange={handleChange}/>
+            <div
+                className='json-editor-window'
+                onScroll={handleScroll}
+                ref={scrollRef}
+            >
+                <div ref={clientHeight}>
+                    <Constructor field={yupSchema} json={formData} onChange={handleChange}/>
+                </div>
             </div>
             <div>
-                <ViewJson data={formData}/>
+                <ViewJson scrollTop={scrollTop} data={formData}/>
             </div>
         </div>
     )

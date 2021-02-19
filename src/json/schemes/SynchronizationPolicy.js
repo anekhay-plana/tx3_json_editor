@@ -1,8 +1,8 @@
 import * as yup from 'yup'
 
-export const SynchronizationPolicy = yup.object({
+export const SynchronizationPolicySchema = yup.object({
     "Synchronization Policy": yup.object({
-        "Version":yup.string().required().required('required'),
+        "Version":yup.string().required('required'),
         "Locations": yup.array().of(
             yup.object({
                 "System": yup.string().required('required'),

@@ -74,12 +74,12 @@ export const SynchronizationPolicy = {
                 "System": "VERA",
                 "Name": "Tx3 VERA Demo Server",
                 "Server": "https://vera-demo.tx3services.com",
+                "Service Account": "",
+                "Service Password": "",
                 "Urls": {
                     "Browser": "https://vera-demo.tx3services.com:8443/details/",
                     "API": "https://vera-demo.tx3services.com/rest/"
                 },
-                "Service Account": "",
-                "Service Password": ""
             }
         ]
     }

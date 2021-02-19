@@ -17,21 +17,30 @@ const ArrayField: React.FC<Props> = ({field, json, name, onChange}) => {
 
     const onChangeInArray = (i, value) => {
         const newArray = [...json]
-        newArray[i]=value
+        newArray[i] = value
         onChange(name, newArray)
     }
+    const onOpen = () => {
+        setOpen(true)
+    }
+
+    const onClose = () => {
+        setOpen(false)
+    }
+
+    const title =
+        <div className='title'>
+            <div>{name}</div>
+            <ExpandMoreIcon className={open ? 'rev-icon' : 'icon'}/>
+        </div>
+
 
     return (
         <div className='array-container'>
             <Collapsible
-                trigger={
-                    <div className='title'>
-                        <div>{name}</div>
-                        <ExpandMoreIcon className={open ? 'rev-icon' : 'icon'}/>
-                    </div>
-                }
-                onOpening={() => setOpen(true)}
-                onClose={() => setOpen(false)}
+                trigger={title}
+                onOpening={onOpen}
+                onClosing={onClose}
                 transitionTime={200}
             >
                 <div>

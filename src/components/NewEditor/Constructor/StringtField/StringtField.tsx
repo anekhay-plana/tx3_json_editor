@@ -5,12 +5,11 @@ import * as yup from "yup";
 interface Props {
     field: any
     json: any
-    name?: string
+    name?: string|number
     onChange: any
 }
 
 const StringField: React.FC<Props> = ({field, json, name,onChange}) => {
-
     const formik = useFormik({
         initialValues: {
             label: name,

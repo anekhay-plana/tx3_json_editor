@@ -19,6 +19,9 @@ const ObjectField: React.FC<Props> = ({field, json,  onChange,name}) => {
     const fields = Object.keys(field.fields)
     return (
         <div className='object-container'>
+            {Boolean(name && typeof name !== "number") &&
+            <div>{name}</div>
+            }
                 {fields.map((item, i) =>
                     <div key={i} className='object-child-container'>
                         <Constructor
