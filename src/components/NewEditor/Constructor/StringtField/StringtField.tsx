@@ -12,10 +12,6 @@ interface Props {
 
 const StringField: React.FC<Props> = ({field, json, name,onChange}) => {
 
-    useEffect(() => {
-            formik.setFieldValue('value', json)
-    }, [json])
-
     const formik = useFormik({
         initialValues: {
             label: typeof name === 'string'? name : '',
@@ -28,6 +24,10 @@ const StringField: React.FC<Props> = ({field, json, name,onChange}) => {
         onSubmit: () => {
         }
     });
+
+    useEffect(() => {
+        formik.setFieldValue('value', json)
+    }, [json])
 
     const handleChange = (e) => {
         formik.handleChange(e);

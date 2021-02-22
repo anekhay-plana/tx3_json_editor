@@ -3,10 +3,10 @@ import * as yup from 'yup'
 export const RecordsManagementPolicySchema = yup.object({
     "Records Management Policy": yup.object({
         "Version": yup.string().required('required'),
-        "Locations": yup.object({
+        "Schema": yup.object({
             "ID": yup.string().url('Enter valid url').required('required'),
-            "Major": yup.string().number('Only numbers').required('required'),
-            "Minor": yup.string().number('Only numbers').required('required')
+            "Major": yup.string().required('required'),
+            "Minor": yup.string().required('required')
         }),
         "Record Types": yup.array().of(
             yup.object({
@@ -14,16 +14,16 @@ export const RecordsManagementPolicySchema = yup.object({
                 "Definitions": yup.array().of(
                     yup.object({
                         "Systems":yup.array().of(
-                            yup.string.required('required')
+                            yup.string().required('required')
                         ),
                         "Aliases":yup.array().of(
                             yup.object({
-                                "Policy Field": yup.string.required('required'),
-                                "System Field":yup.string.required('required')
+                                "Policy Field": yup.string().required('required'),
+                                "System Field":yup.string().required('required')
                             })
                         ),
                         "Item Types":yup.array().of(
-                            yup.string.required('required')
+                            yup.string().required('required')
                         ),
                         "Singular Name": yup.string().required('required'),
                         "Plural Name": yup.string().required('required'),

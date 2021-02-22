@@ -2,6 +2,7 @@ import * as React from "react";
 import {useState} from "react";
 import {SynchronizationPolicy} from '../../json/SynchronizationPolicy'
 import {ApprovalPolicy} from "../../json/ApprovalPolicy";
+import {RecordsManagementPolicy} from "../../json/RecordsManagementPolicy";
 import Constructor from "./Constructor/Constructor";
 import ViewJson from "./ViewJson/ViewJson";
 import './NewEditor.css'
@@ -17,11 +18,15 @@ interface RefObject<T> {
 const NewEditor: React.FC<Props> = ({yupSchema}) => {
     const scrollRef: RefObject<any> = React.createRef()
     const clientHeight: RefObject<any> = React.createRef()
-    const [formData, setFormData] = useState(ApprovalPolicy)
+    const [formData, setFormData] = useState(RecordsManagementPolicy)
     const [scrollTop, setScrollTop] = React.useState(0)
 
     const handleScroll = () => {
         setScrollTop(scrollRef.current.scrollTop / (clientHeight.current.clientHeight))
+    }
+
+    const handleClickElement = (field, json, onChange) =>{
+        console.log(field, json)
     }
 
     const handleChange = (object) => {
@@ -36,7 +41,7 @@ const NewEditor: React.FC<Props> = ({yupSchema}) => {
                 ref={scrollRef}
             >
                 <div ref={clientHeight}>
-                    <Constructor field={yupSchema} json={formData} onChange={handleChange}/>
+                    <Constructor field={yupSchema} json={formData} onChange={handleChange} onClick={handleClickElement}/>
                 </div>
             </div>
             <div>
