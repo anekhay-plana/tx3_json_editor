@@ -1,51 +1,46 @@
 import * as React from "react";
 import {useState} from "react";
-import {SynchronizationPolicy} from '../../json/SynchronizationPolicy'
-import {ApprovalPolicy} from "../../json/ApprovalPolicy";
 import {RecordsManagementPolicy} from "../../json/RecordsManagementPolicy";
 import Constructor from "./Constructor/Constructor";
-import ViewJson from "./ViewJson/ViewJson";
 import './NewEditor.css'
+import EditWindow from "./EditWindow/EditWindow";
 
 interface Props {
     yupSchema: any
 }
 
-interface RefObject<T> {
-    readonly current: T | null
-}
-
 const NewEditor: React.FC<Props> = ({yupSchema}) => {
-    const scrollRef: RefObject<any> = React.createRef()
-    const clientHeight: RefObject<any> = React.createRef()
     const [formData, setFormData] = useState(RecordsManagementPolicy)
-    const [scrollTop, setScrollTop] = React.useState(0)
+    const [selectedItem, setSelectedItem] = useState<object >()
 
-    const handleScroll = () => {
-        setScrollTop(scrollRef.current.scrollTop / (clientHeight.current.clientHeight))
-    }
-
-    const handleClickElement = (field, json, onChange) =>{
-        console.log(field, json)
+    const handleClickElement = (field, json, onChange, name, onClick) => {
+        const selected = {name, field, json, onChange, onClick}
+        console.log('LOOG', selected)
+        setSelectedItem(selected)
     }
 
     const handleChange = (object) => {
+        console.log('object', object)
         setFormData(object)
     }
 
     return (
         <div className='container'>
-            <div
-                className='json-editor-window'
-                onScroll={handleScroll}
-                ref={scrollRef}
-            >
-                <div ref={clientHeight}>
-                    <Constructor field={yupSchema} json={formData} onChange={handleChange} onClick={handleClickElement}/>
+            <div className='json-tree-window'>
+                <div>
+                    <Constructor
+                        field={yupSchema}
+                        json={formData}
+                        onChange={handleChange}
+                        onClick={handleClickElement}
+                    />
                 </div>
             </div>
-            <div>
-                <ViewJson scrollTop={scrollTop} data={formData}/>
+
+            <div className='json-editor-window'>
+                {selectedItem &&
+                <EditWindow {...selectedItem}/>
+                }
             </div>
         </div>
     )

@@ -5,17 +5,10 @@
 .object-child-item{
  margin: 10px 0 0 0;
 }
-.title{
+.edit-title{
     display: flex;
     align-items: center;
-    cursor: pointer;
 }
 .rev-icon{
     transform: rotate(180deg)
-}
-.selected{
-    color: blue;
-}
-.hidden{
-    display: none;
 }

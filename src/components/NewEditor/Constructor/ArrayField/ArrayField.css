@@ -3,17 +3,16 @@
 }
 
 .array-item{
-    margin: 10px 10px 0 0;
 }
 .rev-icon{
     transform: rotate(180deg)
 }
 .array-item .object-container{
     box-shadow: none;
-    margin: 0;
 }
 
 .title{
+    cursor: pointer;
     display: flex;
     align-items: center;
 }
@@ -22,6 +21,9 @@
     width: 100%;
 }
 .array-child-container{
-    margin: 0 10px 0 40px;
+    margin: 0 10px 0 20px;
     border-left: 2px solid #ccc;
+}
+.item-title{
+    cursor: pointer;
 }

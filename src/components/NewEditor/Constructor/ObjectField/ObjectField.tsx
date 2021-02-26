@@ -1,19 +1,38 @@
-import Constructor from "../Constructor";
-import './ObjectField.css'
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import * as React from "react";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import Constructor from "../Constructor";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import './ObjectField.css'
 
 interface Props {
-    field: any
+    field?: any
     json?: any
-    onChange: any
+    onChange?: any
     name?: string | number
-    onClick: any
+    onClick?: any
+    childName?: string
 }
 
-const ObjectField: React.FC<Props> = ({field, json, onChange, name,onClick}) => {
-    const [open, setOpen] = useState(true)
+const ObjectField: React.FC<Props> = ({field, json, onChange, name, onClick, childName}) => {
+    const [open, setOpen] = useState(name||childName ? false : true)
+    const fields = Object.keys(field.fields)
+
+    const checkFields = () => {
+        fields.forEach(item => {
+            if (!json[item]){
+                onChangeInObject(item,[])
+            }
+        })
+    }
+
+    useEffect(()=>checkFields(),[])
+
+    const title = childName ? childName : name
+
+    const handleClickObject = () => {
+        setOpen(true)
+        onClick(field, json, onChange, name, onClick)
+    }
 
     const onOpen = () => {
         setOpen(!open)
@@ -26,19 +45,21 @@ const ObjectField: React.FC<Props> = ({field, json, onChange, name,onClick}) => 
             onChange({...json, [key]: value})
         }
     }
-    const fields = Object.keys(field.fields)
+
+    const renderContent = fields.filter((item) => field.fields[item].type !== 'string')
+
     return (
         <div className='object-container'>
-            {Boolean(name && typeof name !== "number") &&
+            {Boolean(title) &&
             <div className='title'>
+                {Boolean(renderContent.length) &&
                 <ExpandMoreIcon
                     onClick={onOpen}
                     className={open ? 'rev-icon' : ''}
                 />
-                <div
-                    onClick={onClick}
-                >
-                    {name}
+                }
+                <div onClick={handleClickObject}>
+                    {title}
                 </div>
             </div>
             }
@@ -58,7 +79,6 @@ const ObjectField: React.FC<Props> = ({field, json, onChange, name,onClick}) => 
             </div>
             }
         </div>
-
     )
 }
 

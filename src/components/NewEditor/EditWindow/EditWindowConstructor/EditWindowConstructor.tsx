@@ -1,16 +1,8 @@
 import ObjectField from "./ObjectField/ObjectField";
 import ArrayField from "./ArrayField/ArrayField";
+import StringField from "./StringtField/StringtField";
 
-interface Props {
-    field?: any
-    json?: any
-    name?: string
-    onChange?: any
-    onClick?: any
-    childName?:string
-}
-
-const Constructor: React.FC<Props> = (props) => {
+const EditWindowConstructor = (props) => {
     const type = props.field.type
     const renderField = () => {
         switch (type) {
@@ -18,11 +10,13 @@ const Constructor: React.FC<Props> = (props) => {
                 return <ObjectField {...props} />
             case "array":
                 return <ArrayField {...props}/>
+            case "string":
+                return <StringField {...props}/>
             default:
                 return null
         }
     }
     return renderField()
-}
+ }
 
-export default Constructor
+ export default EditWindowConstructor
