@@ -10,9 +10,23 @@ interface Props {
     name?: string
     onChange?: any
     onClick?: any
+    selected: any
+    openPatent?: any
+    way?: string
 }
 
-const ArrayField: React.FC<Props> = ({field, json = [], name, onChange, onClick}) => {
+const ArrayField: React.FC<Props> = (
+    {
+        field,
+        json = [],
+        name,
+        onChange,
+        onClick,
+        selected,
+        openPatent,
+        way
+    }) => {
+
     const [open, setOpen] = useState(false)
 
     const onOpen = () => {
@@ -23,9 +37,15 @@ const ArrayField: React.FC<Props> = ({field, json = [], name, onChange, onClick}
         newArray[i] = value
         onChange(name, newArray)
     }
-    const handleClickArray = () =>{
+
+    const openWhenChildOpen = () => {
+        openPatent()
         setOpen(true)
-        onClick(field, json, onChange, name,onClick)
+    }
+
+    const handleClickArray = () => {
+        setOpen(true)
+        onClick(field, json, onChange, name, onClick, way)
     }
     return (
         <div className='array-container'>
@@ -33,28 +53,36 @@ const ArrayField: React.FC<Props> = ({field, json = [], name, onChange, onClick}
                 {field.innerType.type !== 'string' &&
                 <ExpandMoreIcon onClick={onOpen} className={open ? 'rev-icon' : ''}/>
                 }
-                <div onClick={handleClickArray}>{name}</div>
+                <div
+                    className={way === selected?.way ? 'selected' : ''}
+                    onClick={handleClickArray}
+                >
+                    {name}
+                </div>
             </div>
             <div>
                 <div className='array-child-container'>
-                    {(json && open) &&
-                        <div>
-                    {
-                        json.map((item, i) =>
-                            <div key={i} className='array-item'>
-                                <div>
+                    {json &&
+                    <div className={!open ? 'hidden' : ''}>
+                        {
+                            json.map((item, i) =>
+                                <div key={i} className='array-item'>
+                                    <div className={way ? 'line' : ''}>
+                                    </div>
                                     <Constructor
                                         field={field.innerType}
                                         json={item}
-                                        childName={name + (i+1)}
+                                        childName={name + (i + 1)}
                                         name={i}
                                         onChange={onChangeInArray}
                                         onClick={onClick}
+                                        selected={selected}
+                                        openPatent={openWhenChildOpen}
+                                        way={way + '>' + name + (i + 1)}
                                     />
                                 </div>
-                            </div>
-                        )}
-                        </div>
+                            )}
+                    </div>
                     }
                 </div>
             </div>

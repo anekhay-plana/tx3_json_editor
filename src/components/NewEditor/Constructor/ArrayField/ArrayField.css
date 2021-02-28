@@ -1,8 +1,9 @@
 .array-children{
-    padding: 10px;
+    padding: 0
 }
 
 .array-item{
+    display: flex;
 }
 .rev-icon{
     transform: rotate(180deg)

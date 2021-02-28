@@ -11,41 +11,34 @@ interface Props {
     name?: string
     onChange?: any
     onClick?: any
+    way: string
 }
 
-const ArrayField: React.FC<Props> = ({field, json = [], name, onChange, onClick}) => {
-    const [array, setArray] = useState(json)
-
-    useEffect(()=> setArray(json),[json])
-
+const ArrayField: React.FC<Props> = ({field, json = [], name, onChange, onClick, way}) => {
     const onChangeInArray = (i, value) => {
-        const newArray = [...array]
+        const newArray = [...json]
         newArray[i] = value
-        setArray(newArray)
         onChange(name, newArray)
     }
 
     const handleClickAddItem = () => {
-        const newArray = [...array]
+        const newArray = [...json]
         if (field.innerType.type === 'string') {
             newArray.push('')
         } else {
             const newObj = createObject(field.innerType)
             newArray.push(newObj)
         }
-        setArray(newArray)
         onChange(name, newArray)
     }
 
     const handleClickRemoveItem = (index) => {
-        const newArray = array.filter((item, i) => i !== index)
-        setArray(newArray)
+        const newArray = json.filter((item, i) => i !== index)
         onChange(name, newArray)
     }
 
     const handleClickItem = (item, i) => {
-        console.log('LOOG', item)
-        onClick(field.innerType, item, onChangeInArray, i, onClick)
+        onClick(field.innerType, item, onChangeInArray, i, onClick, way+'>'+name + (i + 1))
     }
 
     return (
@@ -55,7 +48,12 @@ const ArrayField: React.FC<Props> = ({field, json = [], name, onChange, onClick}
                 <button onClick={handleClickAddItem}>add</button>
             </div>
             <div>
-                <ItemsRows json={array} field={field.innerType} onClick={handleClickItem} removeItem={handleClickRemoveItem}/>
+                <ItemsRows
+                    json={json}
+                    field={field.innerType}
+                    onClick={handleClickItem}
+                    removeItem={handleClickRemoveItem}
+                />
             </div>
         </div>
     )

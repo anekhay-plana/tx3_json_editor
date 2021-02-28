@@ -12,6 +12,7 @@ interface Props {
 
 const ItemsTable: React.FC<Props> = (props) => {
     const itemsType = props.field.type
+    console.log('LOOG uuu', props)
     return (
         <div>
         {itemsType === 'object'

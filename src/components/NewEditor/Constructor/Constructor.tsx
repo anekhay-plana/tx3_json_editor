@@ -8,6 +8,9 @@ interface Props {
     onChange?: any
     onClick?: any
     childName?:string
+    selected: any
+    openPatent?: any
+    way?:string
 }
 
 const Constructor: React.FC<Props> = (props) => {

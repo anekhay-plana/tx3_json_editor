@@ -11,27 +11,59 @@ interface Props {
     name?: string | number
     onClick?: any
     childName?: string
+    selected: any
+    openPatent?: any
+    way?: string
 }
 
-const ObjectField: React.FC<Props> = ({field, json, onChange, name, onClick, childName}) => {
-    const [open, setOpen] = useState(name||childName ? false : true)
+const ObjectField: React.FC<Props> = (
+    {
+        field,
+        json,
+        onChange,
+        name,
+        onClick,
+        childName,
+        selected,
+        openPatent,
+        way
+    }) => {
+
+
+    const [open, setOpen] = useState(name || childName ? false : true)
     const fields = Object.keys(field.fields)
 
     const checkFields = () => {
         fields.forEach(item => {
-            if (!json[item]){
-                onChangeInObject(item,[])
+            if (!json[item]) {
+                onChangeInObject(item, [])
             }
         })
     }
+    useEffect(() => {
+        if(selected && way === selected.way){
+            openWhenChildOpen()
+        }
+    }, [selected])
 
-    useEffect(()=>checkFields(),[])
+    const openWhenChildOpen = () => {
+        if (openPatent) {
+            openPatent()
+            setOpen(true)
+        }
+    }
+    useEffect(() => {
+        if(way?.indexOf('>')===-1){
+            handleClickObject()
+        }
+        checkFields()
+    }, [])
 
     const title = childName ? childName : name
 
     const handleClickObject = () => {
         setOpen(true)
-        onClick(field, json, onChange, name, onClick)
+        onClick(field, json, onChange, name, onClick, way)
     }
 
     const onOpen = () => {
@@ -58,13 +90,15 @@ const ObjectField: React.FC<Props> = ({field, json, onChange, name, onClick, chi
                     className={open ? 'rev-icon' : ''}
                 />
                 }
-                <div onClick={handleClickObject}>
+                <div
+                    className={selected && way === selected.way ? 'selected' : ''}
+                    onClick={handleClickObject}
+                >
                     {title}
                 </div>
             </div>
             }
-            {open &&
-            <div className='object-child-container'>
+            <div className={open ? 'object-child-container':'hidden'}>
                 {fields.map((item, i) =>
                     <div key={i} className='object-child-item'>
                         <Constructor
@@ -73,11 +107,13 @@ const ObjectField: React.FC<Props> = ({field, json, onChange, name, onClick, chi
                             name={item}
                             onChange={onChangeInObject}
                             onClick={onClick}
+                            selected={selected}
+                            openPatent={openWhenChildOpen}
+                            way={way? way+'>'+ item: item}
                         />
                     </div>
                 )}
             </div>
-            }
         </div>
     )
 }

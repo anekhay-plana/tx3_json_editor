@@ -13,14 +13,12 @@ const NewEditor: React.FC<Props> = ({yupSchema}) => {
     const [formData, setFormData] = useState(RecordsManagementPolicy)
     const [selectedItem, setSelectedItem] = useState<object >()
 
-    const handleClickElement = (field, json, onChange, name, onClick) => {
-        const selected = {name, field, json, onChange, onClick}
-        console.log('LOOG', selected)
+    const handleClickElement = (field, json, onChange, name, onClick,way) => {
+        const selected = {name, field, json, onChange, onClick,way}
         setSelectedItem(selected)
     }
 
     const handleChange = (object) => {
-        console.log('object', object)
         setFormData(object)
     }
 
@@ -33,6 +31,7 @@ const NewEditor: React.FC<Props> = ({yupSchema}) => {
                         json={formData}
                         onChange={handleChange}
                         onClick={handleClickElement}
+                        selected={selectedItem}
                     />
                 </div>
             </div>

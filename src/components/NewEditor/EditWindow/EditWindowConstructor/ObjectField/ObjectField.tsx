@@ -9,10 +9,10 @@ interface Props {
     onChange?: any
     name?: string | number
     onClick?: any
+    way: string
 }
 
-const ObjectField: React.FC<Props> = ({field, json, onChange, name,onClick}) => {
-    const [object,setObject] = useState(json)
+const ObjectField: React.FC<Props> = ({field, json, onChange, name,onClick,way}) => {
     const fields = Object.keys(field.fields)
 
     const checkFields = () => {
@@ -23,17 +23,18 @@ const ObjectField: React.FC<Props> = ({field, json, onChange, name,onClick}) => 
         })
     }
 
-    useEffect(()=>checkFields(),[])
+    useEffect(()=> {
+        checkFields()
+    },[])
 
     const onChangeInObject = (key, value) => {
-        const newObject = new Object(object)
+        const newObject = new Object(json)
         newObject[key] = value
         if (name || name === 0) {
             onChange(name, newObject)
         } else {
             onChange(newObject)
         }
-        setObject(newObject)
     }
 
     return (
@@ -46,13 +47,14 @@ const ObjectField: React.FC<Props> = ({field, json, onChange, name,onClick}) => 
             </div>
             }
                 {fields.map((item, i) =>
-                    <div key={i} className='object-child-item'>
+                    <div key={i} className='.object-child-item-editor'>
                         <EditWindowConstructor
                             field={field.fields[item]}
                             json={json[item] || ''}
                             name={item}
                             onChange={onChangeInObject}
                             onClick={onClick}
+                            way={way+'>'+ item}
                         />
                     </div>
                 )}
