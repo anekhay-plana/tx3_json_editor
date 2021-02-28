@@ -1,16 +1,16 @@
 import * as React from "react";
 import {useState} from "react";
-import {RecordsManagementPolicy} from "../../json/RecordsManagementPolicy";
 import Constructor from "./Constructor/Constructor";
-import './NewEditor.css'
 import EditWindow from "./EditWindow/EditWindow";
+import './NewEditor.css'
 
 interface Props {
     yupSchema: any
+    json: object
 }
 
-const NewEditor: React.FC<Props> = ({yupSchema}) => {
-    const [formData, setFormData] = useState(RecordsManagementPolicy)
+const NewEditor: React.FC<Props> = ({yupSchema,json}) => {
+    const [formData, setFormData] = useState(json)
     const [selectedItem, setSelectedItem] = useState<object >()
 
     const handleClickElement = (field, json, onChange, name, onClick,way) => {

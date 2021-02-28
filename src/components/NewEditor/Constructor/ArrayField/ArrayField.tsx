@@ -32,6 +32,13 @@ const ArrayField: React.FC<Props> = (
     const onOpen = () => {
         setOpen(!open)
     }
+
+    useEffect(()=>{
+        if(selected?.way==way){
+            handleClickArray()
+        }
+    },[json])
+
     const onChangeInArray = (i, value) => {
         const newArray = [...json]
         newArray[i] = value

@@ -12,6 +12,8 @@ const TableStrings: React.FC<Props> = ({field, json,onClick,removeItem}) => {
     const [page, setPage] = React.useState(0);
     const rowsPerPage = 5;
 
+    const content = Array.isArray(json)? json:[]
+
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
@@ -20,7 +22,7 @@ const TableStrings: React.FC<Props> = ({field, json,onClick,removeItem}) => {
         <div>
             <table>
                 <tbody>
-                {json
+                {content
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((item, i) => (
                             <tr key={item + i}>
@@ -29,13 +31,13 @@ const TableStrings: React.FC<Props> = ({field, json,onClick,removeItem}) => {
                                 </td>
                                 <div className='button-container'>
                                     <div
-                                        onClick={()=>onClick(item,i)}
+                                        onClick={()=>onClick(item,page * rowsPerPage+i)}
                                         className='array-button edit'
                                     >
                                         Edit
                                     </div>
                                     <div
-                                        onClick={()=>removeItem(i)}
+                                        onClick={()=>removeItem(page * rowsPerPage+i)}
                                         className='array-button delete'
                                     >
                                         Delete
@@ -46,11 +48,11 @@ const TableStrings: React.FC<Props> = ({field, json,onClick,removeItem}) => {
                     )}
                 </tbody>
             </table>
-            {json.length > 5 &&
+            {content.length > 5 &&
             <TablePagination
                 rowsPerPageOptions={[rowsPerPage]}
                 component="div"
-                count={json.length}
+                count={content.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 onChangePage={handleChangePage}

@@ -13,6 +13,8 @@ const TableObjects: React.FC<Props> = ({field, json,onClick,removeItem}) => {
     const rowsPerPage = 5;
     const keys = Object.keys(field.fields)
 
+    const content = Array.isArray(json)? json:[]
+
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
@@ -30,7 +32,7 @@ const TableObjects: React.FC<Props> = ({field, json,onClick,removeItem}) => {
                 </tr>
                 </thead>
                 <tbody>
-                {json
+                {content
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((object, i) => (
                             <tr key={'bob'+ i}>
@@ -45,13 +47,13 @@ const TableObjects: React.FC<Props> = ({field, json,onClick,removeItem}) => {
                                 <td className='buttons-field'>
                                     <div className='button-container'>
                                         <div
-                                            onClick={()=>onClick(object,i)}
+                                            onClick={()=>onClick(object,page * rowsPerPage+i)}
                                             className='array-button edit'
                                         >
                                             Edit
                                         </div>
                                         <div
-                                            onClick={()=>removeItem(i)}
+                                            onClick={()=>removeItem(page * rowsPerPage+i)}
                                             className='array-button delete'
                                         >
                                             Delete
@@ -63,11 +65,11 @@ const TableObjects: React.FC<Props> = ({field, json,onClick,removeItem}) => {
                     )}
                 </tbody>
             </table>
-            {json.length > 5 &&
+            {content.length > 5 &&
             <TablePagination
                 rowsPerPageOptions={[rowsPerPage]}
                 component="div"
-                count={json.length}
+                count={content.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 onChangePage={handleChangePage}
