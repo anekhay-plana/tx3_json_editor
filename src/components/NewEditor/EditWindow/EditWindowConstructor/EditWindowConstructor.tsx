@@ -16,7 +16,11 @@ const EditWindowConstructor = (props) => {
                 return null
         }
     }
-    return renderField()
+    return (
+        <div style={{marginTop: '10px', marginBottom: '10px' }}>
+            {renderField()}
+        </div>
+    )
  }
 
  export default EditWindowConstructor

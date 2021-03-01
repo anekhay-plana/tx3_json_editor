@@ -45,7 +45,6 @@ const ArrayField: React.FC<Props> = ({field, json = [], name, onChange, onClick,
         <div className='array-edit-container'>
             <div className='edit-title'>
                 <h2>{name}</h2>
-                <button onClick={handleClickAddItem}>add</button>
             </div>
             <div>
                 <ItemsRows
@@ -53,6 +52,7 @@ const ArrayField: React.FC<Props> = ({field, json = [], name, onChange, onClick,
                     field={field.innerType}
                     onClick={handleClickItem}
                     removeItem={handleClickRemoveItem}
+                    addItem={handleClickAddItem}
                 />
             </div>
         </div>

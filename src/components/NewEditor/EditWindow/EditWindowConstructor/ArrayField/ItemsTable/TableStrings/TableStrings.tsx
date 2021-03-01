@@ -2,13 +2,13 @@ import * as React from "react";
 import {TablePagination} from "@material-ui/core";
 
 interface Props {
-    field?: any
     json?: any
     onClick: any
     removeItem: any
+    addItem: () => void
 }
 
-const TableStrings: React.FC<Props> = ({field, json,onClick,removeItem}) => {
+const TableStrings: React.FC<Props> = ({json,onClick,removeItem,addItem}) => {
     const [page, setPage] = React.useState(0);
     const rowsPerPage = 5;
 
@@ -21,6 +21,14 @@ const TableStrings: React.FC<Props> = ({field, json,onClick,removeItem}) => {
     return (
         <div>
             <table>
+                <thead>
+                <tr>
+                    <td></td>
+                    <td className='buttons-field'>
+                        <u onClick={addItem} className='array-button add'>Add</u>
+                    </td>
+                </tr>
+                </thead>
                 <tbody>
                 {content
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -29,20 +37,20 @@ const TableStrings: React.FC<Props> = ({field, json,onClick,removeItem}) => {
                                 <td >
                                     {item}
                                 </td>
-                                <div className='button-container'>
-                                    <div
+                                <td className='buttons-field'>
+                                    <u
                                         onClick={()=>onClick(item,page * rowsPerPage+i)}
                                         className='array-button edit'
                                     >
                                         Edit
-                                    </div>
-                                    <div
-                                        onClick={()=>removeItem(page * rowsPerPage+i)}
+                                    </u>
+                                    <u
+                                        onClick={() => removeItem(page * rowsPerPage + i)}
                                         className='array-button delete'
                                     >
                                         Delete
-                                    </div>
-                                </div>
+                                    </u>
+                                </td>
                             </tr>
                         )
                     )}

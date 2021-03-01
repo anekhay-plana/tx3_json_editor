@@ -1,5 +1,23 @@
-.clear-icon{
+.actions{
+    align-items: center;
+    height: 38px;
+    margin: 10px 20px 10px 20px;
     display: flex;
-    justify-content: flex-end;
-    margin: 20px;
+    align-content: center;
+}
+button, input{
+    height: 100%;
+}
+input{
+    width: 100%
+}
+.publish{
+    height: 100%;
+    margin-left: auto;
+}
+.add-input{
+    width: 100%;
+}
+.mod-selector{
+    margin-left: 20px;
 }

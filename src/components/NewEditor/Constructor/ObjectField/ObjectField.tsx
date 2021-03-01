@@ -29,19 +29,17 @@ const ObjectField: React.FC<Props> = (
         way
     }) => {
 
-
     const [open, setOpen] = useState(name || childName ? false : true)
     const fields = Object.keys(field.fields)
+    useEffect(()=>{
+        if(selected?.way!==undefined && way===selected?.way){
+            console.log(selected?.way,way)
+            handleClickObject()
+        }
+    },[json])
 
-    const checkFields = () => {
-        fields.forEach(item => {
-            if (!json[item]) {
-                onChangeInObject(item, [])
-            }
-        })
-    }
     useEffect(() => {
-        if(selected && way === selected.way){
+        if (way === selected?.way) {
             openWhenChildOpen()
         }
     }, [selected])
@@ -53,11 +51,10 @@ const ObjectField: React.FC<Props> = (
         }
     }
     useEffect(() => {
-        if(way?.indexOf('>')===-1){
+        if (way?.indexOf('>') === -1) {
             handleClickObject()
         }
-        checkFields()
-    }, [])
+    }, [field])
 
     const title = childName ? childName : name
 
@@ -91,16 +88,16 @@ const ObjectField: React.FC<Props> = (
                 />
                 }
                 <div
-                    className={selected && way === selected.way ? 'selected' : ''}
+                    className={way === selected?.way ? 'selected' : ''}
                     onClick={handleClickObject}
                 >
                     {title}
                 </div>
             </div>
             }
-            <div className={open ? 'object-child-container':'hidden'}>
-                {fields.map((item, i) =>
-                    <div key={i} className='object-child-item'>
+            <div className={open ? 'object-child-container' : 'hidden'}>
+                {renderContent.map((item, i) =>
+                    <div key={i} className={'object-child-item'}>
                         <Constructor
                             field={field.fields[item]}
                             json={json[item] || ''}
@@ -109,11 +106,12 @@ const ObjectField: React.FC<Props> = (
                             onClick={onClick}
                             selected={selected}
                             openPatent={openWhenChildOpen}
-                            way={way? way+'>'+ item: item}
+                            way={way ? way + '>' + item : item}
                         />
                     </div>
                 )}
             </div>
+
         </div>
     )
 }

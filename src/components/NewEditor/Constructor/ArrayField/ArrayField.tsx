@@ -69,7 +69,7 @@ const ArrayField: React.FC<Props> = (
             </div>
             <div>
                 <div className='array-child-container'>
-                    {json &&
+                    {json&&field.innerType.type!=='string'&&
                     <div className={!open ? 'hidden' : ''}>
                         {
                             json.map((item, i) =>

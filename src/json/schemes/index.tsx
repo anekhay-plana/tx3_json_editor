@@ -2,17 +2,19 @@ import {ApprovalPolicySchema} from "./ApprovalPolicy";
 import {RecordsManagementPolicySchema} from "./RecordsManagementPolicy";
 import {SynchronizationPolicySchema} from "./SynchronizationPolicy";
 
-export default [
+const Schemes = [
     {
-        name:'Approval Policy',
-        schema: ApprovalPolicySchema
+        label:'Records Management Policy',
+        value: RecordsManagementPolicySchema
     },
     {
-        name:'RecordsManagement Policy Schema',
-        schema: RecordsManagementPolicySchema
+        label:'Approval Policy',
+        value: ApprovalPolicySchema
     },
     {
-        name:'Synchronization Policy Schema',
-        schema: SynchronizationPolicySchema
+        label:'Synchronization Policy',
+        value: SynchronizationPolicySchema
     },
 ]
+
+export default Schemes

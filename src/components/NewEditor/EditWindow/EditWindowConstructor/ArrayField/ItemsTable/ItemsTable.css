@@ -1,15 +1,9 @@
-.buttons-field{
-    border-left: none;
-    border-right: 1px solid black;
-    text-align: right;
-}
-.button-container{
+ .button-container{
     display: flex;
-    justify-content: flex-end;
+     align-items: center;
 }
 .array-button{
     cursor: pointer;
-    text-decoration: underline;
     margin: 0 5px 0 5px;
 }
 

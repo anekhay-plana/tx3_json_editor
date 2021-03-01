@@ -8,11 +8,11 @@ interface Props {
     json?: any
     onClick: any
     removeItem: any
+    addItem:()=>void
 }
 
 const ItemsTable: React.FC<Props> = (props) => {
     const itemsType = props.field.type
-    console.log('LOOG uuu', props)
     return (
         <div>
         {itemsType === 'object'
