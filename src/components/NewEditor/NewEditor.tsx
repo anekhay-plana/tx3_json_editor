@@ -8,13 +8,16 @@ interface Props {
     yupSchema: any
     json: object
     onChange: (object:object)=> void
+    searchWay:string
+    onClickSearchWay:(string)=> void
 }
 
-const NewEditor: React.FC<Props> = ({yupSchema,json,onChange}) => {
+const NewEditor: React.FC<Props> = ({yupSchema,json,onChange,searchWay,onClickSearchWay}) => {
     const [selectedItem, setSelectedItem] = useState<object >()
 
     const handleClickElement = (field, json, onChange, name, onClick,way) => {
-        const selected = {name, field, json, onChange, onClick,way}
+        onClickSearchWay(way)
+        const selected = {name, field, json, onChange, onClick}
         setSelectedItem(selected)
     }
 
@@ -27,14 +30,14 @@ const NewEditor: React.FC<Props> = ({yupSchema,json,onChange}) => {
                         json={json}
                         onChange={onChange}
                         onClick={handleClickElement}
-                        selected={selectedItem}
+                        searchWay={searchWay}
                     />
                 </div>
             </div>
 
             <div className='json-editor-window'>
                 {selectedItem &&
-                <EditWindow {...selectedItem}/>
+                <EditWindow {...selectedItem} way={searchWay} onClickSearchWay={onClickSearchWay}/>
                 }
             </div>
         </div>

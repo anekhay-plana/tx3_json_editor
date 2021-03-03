@@ -1,6 +1,7 @@
 h2{
     padding: 0;
     margin: 0;
+    font-size: 24px!important;
 }
 td {
     max-width: 100px;
@@ -29,5 +30,6 @@ tr{
     text-align: right;
 }
 *{
+    font-size: 16px!important;
     font-family: Courier New;
 }

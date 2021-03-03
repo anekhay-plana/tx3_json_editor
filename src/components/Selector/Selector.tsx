@@ -14,9 +14,12 @@ interface ProfilesProps {
 }
 
 const Selector:React.FC<ProfilesProps> = ({variants, handleChange, selected}) => {
+
+
     return(
         <div className='selector-container'>
             <Select
+                className='selector'
                 value={selected}
                 onChange={handleChange}
                 options={variants}

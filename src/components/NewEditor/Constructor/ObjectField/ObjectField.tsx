@@ -11,7 +11,7 @@ interface Props {
     name?: string | number
     onClick?: any
     childName?: string
-    selected: any
+    searchWay: string
     openPatent?: any
     way?: string
 }
@@ -24,7 +24,7 @@ const ObjectField: React.FC<Props> = (
         name,
         onClick,
         childName,
-        selected,
+        searchWay,
         openPatent,
         way
     }) => {
@@ -32,17 +32,17 @@ const ObjectField: React.FC<Props> = (
     const [open, setOpen] = useState(name || childName ? false : true)
     const fields = Object.keys(field.fields)
     useEffect(()=>{
-        if(selected?.way!==undefined && way===selected?.way){
-            console.log(selected?.way,way)
+        if(way===searchWay){
             handleClickObject()
         }
     },[json])
 
     useEffect(() => {
-        if (way === selected?.way) {
+        if (way === searchWay) {
+            handleClickObject()
             openWhenChildOpen()
         }
-    }, [selected])
+    }, [searchWay])
 
     const openWhenChildOpen = () => {
         if (openPatent) {
@@ -88,7 +88,7 @@ const ObjectField: React.FC<Props> = (
                 />
                 }
                 <div
-                    className={way === selected?.way ? 'selected' : ''}
+                    className={way === searchWay ? 'selected' : ''}
                     onClick={handleClickObject}
                 >
                     {title}
@@ -104,7 +104,7 @@ const ObjectField: React.FC<Props> = (
                             name={item}
                             onChange={onChangeInObject}
                             onClick={onClick}
-                            selected={selected}
+                            searchWay={searchWay}
                             openPatent={openWhenChildOpen}
                             way={way ? way + '>' + item : item}
                         />

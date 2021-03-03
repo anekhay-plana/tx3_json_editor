@@ -1,16 +1,14 @@
 .actions{
     align-items: center;
-    height: 38px;
-    margin: 10px 20px 10px 20px;
+    height: 40px;
     display: flex;
-    align-content: center;
+    margin-bottom: 33px;
 }
-button, input{
-    height: 100%;
+
+.actions>*{
+    margin: 0 20px 0 5px;
 }
-input{
-    width: 100%
-}
+
 .publish{
     height: 100%;
     margin-left: auto;
@@ -19,5 +17,35 @@ input{
     width: 100%;
 }
 .mod-selector{
-    margin-left: 20px;
+    display: flex;
+}
+.mod-selector-button{
+    display: flex;
+    width: 70px;
+    justify-content: center;
+    align-items: center;
+    border: 1px black solid;
+    height: 40px;
+    cursor: pointer;
+}
+.selected-mod{
+    background: darkgrey;
+}
+
+input {
+    display: none;
+}
+.add-input label {
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    line-height: 16px;
+    padding: .2em .4em;
+    margin: .2em;
+}
+.main-container{
+    margin: 20px;
 }

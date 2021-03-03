@@ -7,16 +7,23 @@ import {useEffect, useRef, useState} from "react";
 import Button from "./Button/Button";
 import './MainWindow.css'
 import ViewJson from "../ViewJson/ViewJson";
+import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 
 
 const MainWindow: React.FC = () => {
     const publishRef: any = useRef();
     const [selectedSchema, setSelectedSchema] = React.useState<any>(Schemes[0])
-    const [json, setJson] = React.useState<any>(createEmptyJsonObject(selectedSchema.value))
-    const [mod, setMod] = useState(true)
+    const [json, setJson] = React.useState<any>(createEmptyJsonObject(Schemes[0].value))
+    const [mod, setMod] = useState('editor')
+    const [searchWay, setSearchWay] = useState('')
 
     const handleChangeSelector = (e) => {
         setSelectedSchema(e)
+    }
+
+
+    const onClickSearchWay = (way) => {
+        setSearchWay(way)
     }
 
     const handleChange = (object) => {
@@ -59,13 +66,15 @@ const MainWindow: React.FC = () => {
         };
     }
     return (
-        <>
+        <div className='main-container'>
             <div className='actions'>
                 <Selector variants={Schemes} handleChange={handleChangeSelector} selected={selectedSchema}/>
                 <Button text={'Create'} onClick={handleClickCreateNewJson}/>
                 or
                 <div className='add-input'>
-                    <input type='file' onChange={handleChangeFile}/>
+                    <label htmlFor="upload-photo">Browse for a file...
+                        <input type="file" name="photo" id="upload-photo" onChange={handleChangeFile}/>
+                    </label>
                 </div>
                 <div className='publish'>
                     <a ref={publishRef}>
@@ -76,15 +85,31 @@ const MainWindow: React.FC = () => {
             </div>
             <div>
                 <div className='mod-selector'>
-                    <button onClick={()=>setMod(true)}>editor</button>
-                    <button onClick={()=>setMod(false)}>json</button>
+                    <div
+                        className={mod === 'editor' ? 'mod-selector-button selected-mod' : 'mod-selector-button'}
+                        onClick={() => setMod('editor')}
+                    >
+                        editor
+                    </div>
+                    <div
+                        className={mod === 'json' ? 'mod-selector-button selected-mod' : 'mod-selector-button'}
+                        onClick={() => setMod('json')}
+                    >
+                        json
+                    </div>
+                    <Breadcrumbs way={searchWay} onClickSearchWay={onClickSearchWay}/>
                 </div>
-            {mod
-                ? <NewEditor yupSchema={selectedSchema.value} json={json} onChange={handleChange}/>
-                : <ViewJson data={json} onChange={handleChange}/>
-            }
+                {mod === 'editor'
+                    ? <NewEditor yupSchema={selectedSchema.value}
+                                 json={json}
+                                 onChange={handleChange}
+                                 searchWay={searchWay}
+                                 onClickSearchWay={onClickSearchWay}
+                    />
+                    : <ViewJson data={json} onChange={handleChange}/>
+                }
             </div>
-        </>
+        </div>
     )
 }
 export default MainWindow

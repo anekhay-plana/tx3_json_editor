@@ -1,0 +1,14 @@
+.boba{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-left: auto;
+}
+.breadcrumbs-word{
+    font-size: 12px;
+    color: blue;
+    cursor: pointer;
+}
+.breadcrumbs-word:last-child{
+    color: black;
+}

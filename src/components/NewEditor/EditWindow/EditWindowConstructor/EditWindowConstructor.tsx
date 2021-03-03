@@ -17,7 +17,7 @@ const EditWindowConstructor = (props) => {
         }
     }
     return (
-        <div style={{marginTop: '10px', marginBottom: '10px' }}>
+        <div>
             {renderField()}
         </div>
     )

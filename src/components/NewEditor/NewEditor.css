@@ -1,7 +1,5 @@
 .container{
     height: 80vh;
-    margin: 10px;
-    margin-top: 0;
     display: flex;
 }
 .json-tree-window{
@@ -12,15 +10,11 @@
     justify-content: flex-start;
     padding: 5px 20px 20px 0;
     border: 2px solid black;
-    margin: 10px;
-    margin-top: 0;
+    margin-right: 20px;
 }
 .json-editor-window {
-
     overflow-x: hidden;
     padding: 20px;
     border: 2px solid black;
-    margin: 10px;
     width: 70%;
-    margin-top: 0;
 }

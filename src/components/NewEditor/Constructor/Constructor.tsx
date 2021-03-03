@@ -8,7 +8,7 @@ interface Props {
     onChange?: any
     onClick?: any
     childName?:string
-    selected: any
+    searchWay: string
     openPatent?: any
     way?:string
 }

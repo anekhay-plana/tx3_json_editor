@@ -15,6 +15,7 @@ interface Props {
 }
 
 const ArrayField: React.FC<Props> = ({field, json = [], name, onChange, onClick, way}) => {
+    console.log('LOOG', onChange)
     const onChangeInArray = (i, value) => {
         const newArray = [...json]
         newArray[i] = value
@@ -29,6 +30,7 @@ const ArrayField: React.FC<Props> = ({field, json = [], name, onChange, onClick,
             const newObj = createObject(field.innerType)
             newArray.push(newObj)
         }
+        handleClickItem(newArray, newArray.length-1)
         onChange(name, newArray)
     }
 
@@ -43,7 +45,7 @@ const ArrayField: React.FC<Props> = ({field, json = [], name, onChange, onClick,
 
     return (
         <div className='array-edit-container'>
-            <div className='edit-title'>
+            <div className='edit-title-array'>
                 <h2>{name}</h2>
             </div>
             <div>

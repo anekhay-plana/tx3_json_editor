@@ -1,4 +1,23 @@
 .selector-container{
-    width: 30%;
-    margin-right: 10px;
+    margin-left: 0!important;
+}
+.selector{
+    border: 1px black solid;
+    height: 40px;
+    width: 450px;
+}
+.selector .css-1hb7zxy-IndicatorsContainer{
+    border-left: 1px black solid;
+    background: #c5c5c5;
+    color: black;
+}
+
+.selector .css-yk16xz-control{
+    border: none;
+}
+.selector span{
+    display: none;
+}
+.selector *{
+    color: black;
 }

@@ -1,15 +1,12 @@
-.edit-title{
+.edit-title-array{
     display: flex;
     align-items: center;
-    margin: 0 0 10px 0;
+    margin-bottom: 10px;
 }
 .buttons{
     display: flex;
     justify-content: space-between;
-    margin: 10px 0 10px 0;
 }
-/*.array-edit-container{*/
-/*    border-radius: 12px;*/
-/*    padding: 10px;*/
-/*    background: #d4d2d2;*/
-/*}*/
+.array-edit-container{
+    margin-bottom: 20px;
+}

@@ -38,7 +38,7 @@ const ObjectField: React.FC<Props> = ({field, json, onChange, name,onClick,way})
     }
 
     return (
-        <div className='object-container'>
+        <div className='object-edit-container'>
             {Boolean(name && typeof name !== "number") &&
             <div className='edit-title'>
                 <h2>
@@ -47,7 +47,7 @@ const ObjectField: React.FC<Props> = ({field, json, onChange, name,onClick,way})
             </div>
             }
                 {fields.map((item, i) =>
-                    <div key={i} className='.object-child-item-editor'>
+                    <div key={i} className='object-child-item-editor'>
                         <EditWindowConstructor
                             field={field.fields[item]}
                             json={json[item] || ''}

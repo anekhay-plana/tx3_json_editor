@@ -10,7 +10,7 @@ interface Props {
     name?: string
     onChange?: any
     onClick?: any
-    selected: any
+    searchWay: string
     openPatent?: any
     way?: string
 }
@@ -22,9 +22,9 @@ const ArrayField: React.FC<Props> = (
         name,
         onChange,
         onClick,
-        selected,
+        searchWay,
         openPatent,
-        way
+        way = ''
     }) => {
 
     const [open, setOpen] = useState(false)
@@ -33,8 +33,15 @@ const ArrayField: React.FC<Props> = (
         setOpen(!open)
     }
 
+    useEffect(() => {
+        if (way === searchWay) {
+            handleClickArray()
+            openWhenChildOpen()
+        }
+    }, [searchWay])
+
     useEffect(()=>{
-        if(selected?.way==way){
+        if(searchWay==way){
             handleClickArray()
         }
     },[json])
@@ -45,6 +52,7 @@ const ArrayField: React.FC<Props> = (
         onChange(name, newArray)
     }
 
+
     const openWhenChildOpen = () => {
         openPatent()
         setOpen(true)
@@ -52,8 +60,16 @@ const ArrayField: React.FC<Props> = (
 
     const handleClickArray = () => {
         setOpen(true)
-        onClick(field, json, onChange, name, onClick, way)
+        onClick(field, json, onChangeInArray, name, onClick, way)
     }
+
+    const thisIsYourWay = () => {
+        if(field.innerType.type==='string'){
+            return searchWay.indexOf(way)+1
+        }
+        return way === searchWay
+    }
+
     return (
         <div className='array-container'>
             <div className='title'>
@@ -61,7 +77,7 @@ const ArrayField: React.FC<Props> = (
                 <ExpandMoreIcon onClick={onOpen} className={open ? 'rev-icon' : ''}/>
                 }
                 <div
-                    className={way === selected?.way ? 'selected' : ''}
+                    className={thisIsYourWay() ? 'selected' : ''}
                     onClick={handleClickArray}
                 >
                     {name}
@@ -83,7 +99,7 @@ const ArrayField: React.FC<Props> = (
                                         name={i}
                                         onChange={onChangeInArray}
                                         onClick={onClick}
-                                        selected={selected}
+                                        searchWay={searchWay}
                                         openPatent={openWhenChildOpen}
                                         way={way + '>' + name + (i + 1)}
                                     />
