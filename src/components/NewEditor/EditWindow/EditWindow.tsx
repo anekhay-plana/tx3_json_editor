@@ -10,9 +10,10 @@ interface Props {
 }
 
 const EditWindow: React.FC<Props> = (props) => {
+    const nestingLevel = 0
     return (
         <div >
-            <EditWindowConstructor {...props}/>
+            <EditWindowConstructor {...props} nestingLevel={nestingLevel}/>
         </div>
     )
 }

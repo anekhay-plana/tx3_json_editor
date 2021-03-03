@@ -12,10 +12,10 @@ interface Props {
     onChange?: any
     onClick?: any
     way: string
+    nestingLevel: number
 }
 
-const ArrayField: React.FC<Props> = ({field, json = [], name, onChange, onClick, way}) => {
-    console.log('LOOG', onChange)
+const ArrayField: React.FC<Props> = ({field, json = [], name, onChange, onClick, way, nestingLevel}) => {
     const onChangeInArray = (i, value) => {
         const newArray = [...json]
         newArray[i] = value
@@ -23,15 +23,12 @@ const ArrayField: React.FC<Props> = ({field, json = [], name, onChange, onClick,
     }
 
     const handleClickAddItem = () => {
-        const newArray = [...json]
-        if (field.innerType.type === 'string') {
-            newArray.push('')
-        } else {
-            const newObj = createObject(field.innerType)
-            newArray.push(newObj)
-        }
-        handleClickItem(newArray, newArray.length-1)
+        const newContent = field.innerType.type === 'string' ? '' : createObject(field.innerType)
+        const newArray = [...json, newContent]
+        const index = newArray.length-1
+        handleClickItem(newArray[index],index)
         onChange(name, newArray)
+
     }
 
     const handleClickRemoveItem = (index) => {
@@ -40,7 +37,7 @@ const ArrayField: React.FC<Props> = ({field, json = [], name, onChange, onClick,
     }
 
     const handleClickItem = (item, i) => {
-        onClick(field.innerType, item, onChangeInArray, i, onClick, way+'>'+name + (i + 1))
+        onClick(field.innerType, item, onChangeInArray, i, onClick, way + '>' + name + (i + 1))
     }
 
     return (

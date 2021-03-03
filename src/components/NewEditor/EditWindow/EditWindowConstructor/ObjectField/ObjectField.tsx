@@ -10,9 +10,10 @@ interface Props {
     name?: string | number
     onClick?: any
     way: string
+    nestingLevel:number
 }
 
-const ObjectField: React.FC<Props> = ({field, json, onChange, name,onClick,way}) => {
+const ObjectField: React.FC<Props> = ({field, json, onChange, name,onClick,way,nestingLevel}) => {
     const fields = Object.keys(field.fields)
 
     const checkFields = () => {
@@ -55,6 +56,7 @@ const ObjectField: React.FC<Props> = ({field, json, onChange, name,onClick,way})
                             onChange={onChangeInObject}
                             onClick={onClick}
                             way={way+'>'+ item}
+                            nestingLevel={nestingLevel+1}
                         />
                     </div>
                 )}

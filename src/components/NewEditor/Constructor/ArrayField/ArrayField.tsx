@@ -60,7 +60,7 @@ const ArrayField: React.FC<Props> = (
 
     const handleClickArray = () => {
         setOpen(true)
-        onClick(field, json, onChangeInArray, name, onClick, way)
+        onClick(field, json, onChange, name, onClick, way)
     }
 
     const thisIsYourWay = () => {
