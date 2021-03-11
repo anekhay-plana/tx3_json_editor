@@ -14,7 +14,6 @@ const MixedField: React.FC<Props> = ({field, json, onClick, removeItem, addItem,
     const variants: any = Array.from(field['_whitelist'].list)
     const [page, setPage] = React.useState(0);
     const rowsPerPage = 5;
-    console.log('LOOG', name)
     const content = Array.isArray(json) ? json : []
 
     const handleChangePage = (event, newPage) => {
@@ -28,8 +27,8 @@ const MixedField: React.FC<Props> = ({field, json, onClick, removeItem, addItem,
                     <tr>
                         <td></td>
                         <td className='buttons-field'>
-                            {variants.map(item =>
-                                <u onClick={() => addItem(item)} className='array-button add'>
+                            {variants.map((item,i) =>
+                                <u key={i} onClick={() => addItem(item)} className='array-button add'>
                                     {"add " + item.type}
                                 </u>
                             )}

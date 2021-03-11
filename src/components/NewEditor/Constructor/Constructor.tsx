@@ -3,19 +3,7 @@ import ArrayField from "./ArrayField/ArrayField";
 import MixedField from "./MixedField/MixedField";
 import StringField from "./StringField/StringField";
 
-interface Props {
-    field?: any
-    json?: any
-    name?: string
-    onChange?: any
-    onClick?: any
-    childName?:string
-    searchWay: string
-    openPatent?: any
-    way?:string
-}
-
-const Constructor: React.FC<Props> = (props) => {
+const Constructor = (props) => {
     const type = props.field.type
     const renderField = () => {
         switch (type) {

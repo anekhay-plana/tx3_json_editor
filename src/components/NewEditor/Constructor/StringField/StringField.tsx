@@ -11,6 +11,7 @@ interface Props {
     searchWay: string
     openPatent?: any
     way?: string
+    parentWay?: string
 }
 
 const StringField: React.FC<Props> = (
@@ -23,7 +24,8 @@ const StringField: React.FC<Props> = (
         childName,
         searchWay,
         openPatent,
-        way
+        way,
+        parentWay
     }) => {
 
     useEffect(() => {
@@ -53,7 +55,7 @@ const StringField: React.FC<Props> = (
     const title = childName ? childName : name
 
     const handleClickObject = () => {
-        onClick(field, json, onChange, name, onClick, way)
+        onClick(field, json, onChange, name, onClick, way, parentWay)
     }
 
 

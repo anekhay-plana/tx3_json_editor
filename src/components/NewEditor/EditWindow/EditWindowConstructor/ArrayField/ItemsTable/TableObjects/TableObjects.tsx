@@ -42,7 +42,7 @@ const TableObjects: React.FC<Props> = ({field, json, onClick, removeItem, addIte
                                     <td key={item + i}>
                                         {field.fields[item].type === 'string'
                                             ? object[item]
-                                            : field.fields[item].type
+                                            : `[${field.fields[item].type}]`
                                         }
                                     </td>
                                 )}

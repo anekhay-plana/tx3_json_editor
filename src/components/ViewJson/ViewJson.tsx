@@ -5,20 +5,21 @@ import './ViewJson.css'
 
 interface Props {
     data: object
-    onChange?: any
+    onChange: (object:object)=>void
 }
 
 const ViewJson: React.FC<Props>  = ({ data, onChange}) => {
 
-    const bob = (e:any) => {
-        onChange(e.plainText)
+    const changeOnView = (e:any) => {
+        const changedObject = e.jsObject
+        onChange(changedObject)
     }
 
     return (
         <div className='json-display-window'>
             <div>
                 <JSONInput
-                    onChange={bob}
+                    onChange={changeOnView}
                     locale={locale}
                     placeholder={data}
                     confirmGood={false}

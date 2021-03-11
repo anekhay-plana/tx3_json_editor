@@ -8,7 +8,7 @@ const Schemes = [
         value: RecordsManagementPolicySchema
     },
     {
-        label:'Approval Policy for ALM',
+        label:'Approval Policy',
         value: ApprovalPolicySchema
     },
     {

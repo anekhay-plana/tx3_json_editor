@@ -37,7 +37,7 @@ const ArrayField: React.FC<Props> = ({field, json = [], name, onChange, onClick,
     }
 
     const handleClickItem = (item, i) => {
-        onClick(field.innerType, item, onChangeInArray, i, onClick, way + '>' + name + (i + 1))
+        onClick(field.innerType, item, onChangeInArray, i, onClick, way + '>' + name + (i + 1),way)
     }
 
     return (

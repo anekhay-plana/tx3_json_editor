@@ -20,6 +20,7 @@ const Breadcrumbs: React.FC<Props> = (props) => {
         <div className='boba'>
             {wayMap.map((item,i)=>
                 <div
+                    key={i}
                     className='breadcrumbs-word'
                     onClick={()=>handleClick(i)}
                 >

@@ -15,9 +15,9 @@ interface Props {
 const NewEditor: React.FC<Props> = ({yupSchema,json,onChange,searchWay,onClickSearchWay}) => {
     const [selectedItem, setSelectedItem] = useState<object >()
 
-    const handleClickElement = (field, json, onChange, name, onClick,way) => {
+    const handleClickElement = (field, json, onChange, name, onClick,way,parentsWay) => {
         onClickSearchWay(way)
-        const selected = {name, field, json, onChange, onClick}
+        const selected = {name, field, json, onChange, onClick,parentsWay}
         setSelectedItem(selected)
     }
 

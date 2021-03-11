@@ -102,6 +102,7 @@ const ArrayField: React.FC<Props> = (
                                         searchWay={searchWay}
                                         openPatent={openWhenChildOpen}
                                         way={way + '>' + name + (i + 1)}
+                                        parentWay={way}
                                     />
                                 </div>
                             )}

@@ -5,9 +5,9 @@ import Selector from "../Selector/Selector";
 import {createEmptyJsonObject} from "./helpers";
 import {useEffect, useRef, useState} from "react";
 import Button from "./Button/Button";
-import './MainWindow.css'
 import ViewJson from "../ViewJson/ViewJson";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
+import './MainWindow.css'
 
 
 const MainWindow: React.FC = () => {
@@ -17,10 +17,10 @@ const MainWindow: React.FC = () => {
     const [mod, setMod] = useState('editor')
     const [searchWay, setSearchWay] = useState('')
 
+
     const handleChangeSelector = (e) => {
         setSelectedSchema(e)
     }
-
 
     const onClickSearchWay = (way) => {
         setSearchWay(way)
@@ -41,7 +41,7 @@ const MainWindow: React.FC = () => {
 
     useEffect(() => {
         handleClickCreateNewJson()
-    }, selectedSchema)
+    }, [selectedSchema])
 
     const handleClickCreateNewJson = () => {
         setJson(createEmptyJsonObject(selectedSchema.value))
@@ -56,6 +56,7 @@ const MainWindow: React.FC = () => {
         reader.onload = function () {
             const selectedJson = JSON.parse(String(reader.result))
             const firstKey = Object.keys(selectedJson)[0]
+            console.log('selectedJson', selectedJson)
             Schemes.forEach((item, i) => {
                     if (item.label === firstKey) {
                         setJson(selectedJson)

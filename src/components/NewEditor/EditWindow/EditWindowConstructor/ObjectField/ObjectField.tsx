@@ -14,6 +14,7 @@ interface Props {
 }
 
 const ObjectField: React.FC<Props> = ({field, json, onChange, name,onClick,way,nestingLevel}) => {
+    console.log('LOOG', field)
     const fields = Object.keys(field.fields)
 
     const onChangeInObject = (key, value) => {

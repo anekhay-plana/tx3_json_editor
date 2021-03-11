@@ -14,6 +14,7 @@ interface Props {
     searchWay: string
     openPatent?: any
     way?: string
+    parentWay?: string
 }
 
 const ObjectField: React.FC<Props> = (
@@ -26,7 +27,8 @@ const ObjectField: React.FC<Props> = (
         childName,
         searchWay,
         openPatent,
-        way
+        way,
+        parentWay
     }) => {
 
     const [open, setOpen] = useState(name || childName ? false : true)
@@ -60,7 +62,7 @@ const ObjectField: React.FC<Props> = (
 
     const handleClickObject = () => {
         setOpen(true)
-        onClick(field, json, onChange, name, onClick, way)
+        onClick(field, json, onChange, name, onClick, way,parentWay)
     }
 
     const onOpen = () => {

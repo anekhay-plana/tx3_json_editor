@@ -1,12 +1,11 @@
 .edit-title-array{
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
 }
 .buttons{
     display: flex;
     justify-content: space-between;
 }
 .array-edit-container{
-    margin-bottom: 20px;
+    margin-top: 30px;
 }
