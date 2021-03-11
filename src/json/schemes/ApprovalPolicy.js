@@ -9,8 +9,16 @@ export const ApprovalPolicySchema = yup.object({
             "Minor": yup.string().required('required')
         }),
         "Approval Groups": yup.array().of(
-            yup.string().required('required')
-        ),
+            yup.mixed().oneOf([
+            yup.string().required('required'),
+            yup.object({
+                "Name": yup.string().required('required'),
+                "Subgroups": yup.array().of(
+                    yup.string().required('required')
+                ),
+            })
+        ])),
+        "Lock Task Order":yup.string().required('required'),
         "Route Templates": yup.array().of(
             yup.object({
                 "Name": yup.string().required('required'),
@@ -18,11 +26,22 @@ export const ApprovalPolicySchema = yup.object({
                 "Record Types":yup.array().of(
                     yup.string().required('required')
                 ),
+                'Prevent Author Approval':yup.string().required('required'),
+                'Lock Task Order':yup.string().required('required'),
                 "Levels": yup.array().of(
                     yup.object({
                         "Name": yup.string().required('required'),
                         "Approvers":yup.array().of(
-                            yup.string().required('required')
+                            yup.mixed().oneOf([
+                                yup.string().required('required'),
+                                yup.object({
+                                    "Role": yup.string().required('required'),
+                                    "Field":yup.string().required('required'),
+                                    "Description": yup.string().required('required'),
+                                    "Lock Task Order":yup.string().required('required'),
+                                    "Delimiter": yup.string().required('required')
+                                })
+                            ])
                         ),
                     })
 

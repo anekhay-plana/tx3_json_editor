@@ -12,8 +12,8 @@ import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 
 const MainWindow: React.FC = () => {
     const publishRef: any = useRef();
-    const [selectedSchema, setSelectedSchema] = React.useState<any>(Schemes[0])
-    const [json, setJson] = React.useState<any>(createEmptyJsonObject(Schemes[0].value))
+    const [selectedSchema, setSelectedSchema] = React.useState<any>(Schemes[1])
+    const [json, setJson] = React.useState<any>(createEmptyJsonObject(Schemes[1].value))
     const [mod, setMod] = useState('editor')
     const [searchWay, setSearchWay] = useState('')
 

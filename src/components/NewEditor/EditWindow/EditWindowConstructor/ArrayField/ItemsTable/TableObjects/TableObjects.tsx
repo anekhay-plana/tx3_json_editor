@@ -6,7 +6,7 @@ interface Props {
     json?: any
     onClick: any
     removeItem: any
-    addItem: () => void
+    addItem: (schema:object) => void
 }
 
 const TableObjects: React.FC<Props> = ({field, json, onClick, removeItem, addItem}) => {
@@ -29,7 +29,7 @@ const TableObjects: React.FC<Props> = ({field, json, onClick, removeItem, addIte
                         <td key={item}>{item}</td>
                     )}
                     <td className='buttons-field'>
-                        <u onClick={addItem} className='array-button add'>Add</u>
+                        <u onClick={()=>addItem(field)} className='array-button add'>Add</u>
                     </td>
                 </tr>
                 </thead>

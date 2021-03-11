@@ -22,8 +22,8 @@ const ArrayField: React.FC<Props> = ({field, json = [], name, onChange, onClick,
         onChange(name, newArray)
     }
 
-    const handleClickAddItem = () => {
-        const newContent = field.innerType.type === 'string' ? '' : createObject(field.innerType)
+    const handleClickAddItem = (schema) => {
+        const newContent = field.innerType.type === 'string' ? '' : createObject(schema)
         const newArray = [...json, newContent]
         const index = newArray.length-1
         handleClickItem(newArray[index],index)
@@ -52,6 +52,7 @@ const ArrayField: React.FC<Props> = ({field, json = [], name, onChange, onClick,
                     onClick={handleClickItem}
                     removeItem={handleClickRemoveItem}
                     addItem={handleClickAddItem}
+                    name={name}
                 />
             </div>
         </div>

@@ -2,13 +2,14 @@ import * as React from "react";
 import {TablePagination} from "@material-ui/core";
 
 interface Props {
+    field?: any
     json?: any
     onClick: any
     removeItem: any
-    addItem: () => void
+    addItem: (schema:object) => void
 }
 
-const TableStrings: React.FC<Props> = ({json,onClick,removeItem,addItem}) => {
+const TableStrings: React.FC<Props> = ({field, json,onClick,removeItem,addItem}) => {
     const [page, setPage] = React.useState(0);
     const rowsPerPage = 5;
 
@@ -25,7 +26,7 @@ const TableStrings: React.FC<Props> = ({json,onClick,removeItem,addItem}) => {
                 <tr>
                     <td></td>
                     <td className='buttons-field'>
-                        <u onClick={addItem} className='array-button add'>Add</u>
+                        <u onClick={()=>addItem(field)} className='array-button add'>Add</u>
                     </td>
                 </tr>
                 </thead>

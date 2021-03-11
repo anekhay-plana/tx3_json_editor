@@ -16,18 +16,6 @@ interface Props {
 const ObjectField: React.FC<Props> = ({field, json, onChange, name,onClick,way,nestingLevel}) => {
     const fields = Object.keys(field.fields)
 
-    const checkFields = () => {
-        fields.forEach(item => {
-            if (!json[item]){
-                onChangeInObject(item,[])
-            }
-        })
-    }
-
-    useEffect(()=> {
-        checkFields()
-    },[])
-
     const onChangeInObject = (key, value) => {
         const newObject = new Object(json)
         newObject[key] = value

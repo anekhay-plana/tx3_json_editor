@@ -10,6 +10,7 @@ interface Props {
 }
 
 const EditWindow: React.FC<Props> = (props) => {
+    console.log('LOOG', props)
     const nestingLevel = 0
     return (
         <div >

@@ -1,4 +1,7 @@
 export const createObject = (schema) => {
+    if(schema.type==='string'){
+        return ''
+    }
     const newObj = new Object(null)
     for (const key in schema.fields){
         switch (schema.fields[key].type){

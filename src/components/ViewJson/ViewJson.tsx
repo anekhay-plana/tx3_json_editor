@@ -10,8 +10,6 @@ interface Props {
 
 const ViewJson: React.FC<Props>  = ({ data, onChange}) => {
 
-    console.log('LOOG123123123', data)
-
     const bob = (e:any) => {
         onChange(e.plainText)
     }

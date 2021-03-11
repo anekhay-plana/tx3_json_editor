@@ -1,5 +1,7 @@
 import ObjectField from "./ObjectField/ObjectField";
 import ArrayField from "./ArrayField/ArrayField";
+import MixedField from "./MixedField/MixedField";
+import StringField from "./StringField/StringField";
 
 interface Props {
     field?: any
@@ -21,6 +23,10 @@ const Constructor: React.FC<Props> = (props) => {
                 return <ObjectField {...props} />
             case "array":
                 return <ArrayField {...props}/>
+            case "mixed":
+                return <MixedField {...props}/>
+            case "string":
+                return <StringField {...props}/>
             default:
                 return null
         }
